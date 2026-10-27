@@ -1,9 +1,106 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title data-src>Sambriddhi's Studio</title>
-<meta name="claude:viewport-fit-sides" content="cover" data-src>
-<link rel="preconnect" href="https://fonts.googleapis.com" data-src>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-src>
-<link data-src rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Yesteryear&family=Jost:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
-<style data-src>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Sambriddhi's Studio</title>
+<!--
+  ==============================================================
+   EDIT YOUR SITE HERE
+   Everything you'll want to change is in the script just below.
+
+   PHOTOS: make a folder called  photos  next to this file, put your
+   pictures in it, then write the path, e.g.  photo: "photos/sunset.jpg"
+   (exact spelling, capital letters matter on Vercel).
+   Leave photo as "" to show a placeholder drawing instead.
+
+   TO ADD ONE: copy a whole { ... }, block, paste it, and change the text.
+   The first item in each list shows first on the page.
+  ==============================================================
+-->
+<script>
+const ART = [
+   {
+    title: "Bhairav",
+    photo: "bhairav.jpeg",
+    medium: "Watercolor",
+    note: " Made on chartpaper 5 hours"
+  },
+  {
+    title: "Bird",
+    photo: "bird.jpg",
+    medium: "Sketch",
+  },
+   {
+    title: "Candle ",
+    photo: "candle.jpg",
+    medium: "Sketch",
+  },
+   {
+    title: "chicken",
+    photo: "chick.jpg",
+    medium: "Sketch",
+  },
+];
+
+const CROCHET = [
+  {
+    title: "Granny square cardigan",
+    photo: "",                        // e.g. "photos/cardigan.jpg"
+    finished: false,                  // true = Finished, false = On the hook
+    hook: "5.0 mm",
+    yarn: "Worsted wool, nine colours",
+    hours: "62 so far",
+    date: "Begun August 2026",
+    note: "Forty-eight squares joined and one sleeve finished. The second sleeve is on the hook."
+  },
+];
+
+const BOOK_REVIEWS = [
+  {
+    title: "Piranesi",
+    author: "Susanna Clarke",
+    rating: 5,                        // out of 5, halves are fine (4.5)
+    pages: 272,
+    dateRead: "2026-10-12",           // year-month-day
+    genre: "Fantasy",
+    review: "A strange, quiet book about a man who lives in an endless house of statues and tides. It reads like a puzzle and a prayer at once. I finished it in two sittings, then sat in silence for a while.",
+    tags: ["Worth re-reading", "Short"]
+  },
+];
+
+// Miscellaneous corkboard. Four kinds of scrap:
+//   "photo" = polaroid (can have photo: "photos/..."), "note" = sticky note,
+//   "list"  = notebook page,  "stat" = ticket with a big number
+const MISC = [
+  { kind: "photo", title: "Small Joys, issue one", when: "Zine · September 2026", text: "Twelve pages folded from A3, printed in two colours. Thirty copies, gone by noon.", photo: "" },
+  { kind: "list",  title: "Currently", items: [["Reading", "Braiding Sweetgrass, again"], ["Hooking", "Cardigan, sleeve two"], ["Painting", "A series of tiny skies"], ["Learning", "Lino printing"]] },
+  { kind: "stat",  title: "Books read in 2026", number: "37", text: "The goal was thirty. Audiobooks during long crochet sessions helped." },
+  { kind: "note",  title: "Sourdough, attempt four", when: "October 2026", text: "Finally an ear on the loaf. Next time: a longer bulk ferment and a hotter oven." },
+  { kind: "list",  title: "Where I sketch", items: [["Mondays", "The library steps"], ["Saturdays", "The market"], ["Daily", "The 7:40 train"]] },
+  { kind: "stat",  title: "Houseplants", number: "14", text: "One loss this year. Farewell, basil." },
+  { kind: "note",  title: "First lino print", when: "October 2026", text: "A small fern. I cut too deep on one leaf, but the third pull came out crisp." },
+  { kind: "list",  title: "Next to make", items: [["Craft", "Embroidered denim jacket"], ["Crochet", "A full chess set"], ["Paint", "A thirty-day sky journal"]] },
+];
+
+// Leave any of these as "" to hide that line.
+const CONTACT = {
+  email: "hello@yourname.com",
+  instagram: "@yourhandle",
+  ravelry: "yourhandle",
+  storygraph: "yourhandle",
+  city: "Your city"
+};
+</script>
+<!-- ======================= end of the edit area ======================= -->
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Yesteryear&family=Jost:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<style>
 /* Layout: 1950s Italian packaging shell (oval script masthead, colour-block lineup, reds & browns on parchment). Each section has its own world: Art = gallery wall, Crochet = yarn labels on gingham, Books = library cards on a desk, Miscellaneous = corkboard scrapbook. Single light theme by design. */
 :root{
   --parchment:#F3EADB; --paper:#FBF6EE; --ink:#2A1712; --muted:#7A5E50; --line:#DCCAB3;
@@ -168,40 +265,11 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 .sticky h3{font-family:var(--script);font-size:1.9rem;color:var(--ink);line-height:1}
 .sticky p{margin:0;font-size:.95rem}
 
-/* editing (editors only) */
-.owner-bar{display:flex;gap:10px 12px;flex-wrap:wrap;align-items:center}
-.add-btn{font:600 .74rem var(--body);letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border-radius:999px;border:0;background:var(--cream);color:var(--cherry);cursor:pointer;transition:transform .2s}
-.add-btn:hover{transform:rotate(-1.5deg)}
-.gingham .add-btn{background:var(--rust);color:var(--cream)}
-.ghost-btn{font:500 .7rem var(--body);letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}
-.owner-note{font-size:.78rem;opacity:.75}
 .empty{grid-column:1/-1;width:100%;text-align:center;font-family:var(--display);font-size:1.4rem;opacity:.85;margin:24px 0}
-.sheet{position:fixed;inset:0;z-index:30;background:rgba(42,23,18,.6);display:grid;place-items:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.sheet-card{background:var(--paper);color:var(--ink);width:min(580px,100%);padding:28px clamp(18px,4vw,32px);display:grid;gap:18px;border-top:6px solid var(--cherry);margin:auto}
-.sheet[data-kind="crochet"] .sheet-card{border-top-color:var(--rust)}
-.sheet-head{display:grid;gap:4px}
-.sheet-head h2{font-size:2rem}
-.drop{display:grid;place-items:center;gap:8px;min-height:170px;border:2px dashed var(--line);background:var(--parchment);cursor:pointer;position:relative;overflow:hidden;text-align:center;padding:14px;color:var(--muted);font-size:.95rem}
-.drop:focus-within{outline:2px solid var(--cherry);outline-offset:2px}
-.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.drop img{max-height:240px;width:auto;max-width:100%;object-fit:contain;display:block}
-.drop b{font-family:var(--script);font-weight:400;font-size:1.8rem;color:var(--cherry);line-height:1}
-.fields{display:grid;gap:12px}
-.fields label{display:grid;gap:5px;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.fields input,.fields textarea,.fields select{font:400 1rem var(--body);letter-spacing:0;text-transform:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%;min-width:0}
-.fields textarea{resize:vertical}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.sheet[data-kind="art"] .cro-only,.sheet[data-kind="crochet"] .art-only{display:none}
-.sheet-msg{margin:0;font-size:.92rem;color:var(--cherry);min-height:1.3em}
-.sheet-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
-.solid,.ghost{font:600 .72rem var(--body);letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border-radius:999px;cursor:pointer}
-.solid{background:var(--cherry);color:var(--cream);border:0}
-.solid:disabled{opacity:.6;cursor:progress}
-.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.remove-btn{font:600 .66rem var(--body);letter-spacing:.14em;text-transform:uppercase;background:none;border:1px solid var(--cherry);color:var(--cherry);border-radius:999px;padding:8px 16px;cursor:pointer}
-.remove-btn.armed{background:var(--cherry);color:var(--cream)}
-.lb-msg{margin:0;font-size:.88rem;color:var(--cherry)}
-@media (max-width:480px){.pair{grid-template-columns:1fr}}
+.img.auto{aspect-ratio:auto}
+.img.auto .photo{height:auto}
+.lb .img.auto{aspect-ratio:auto}
+#lb-photo.fit{width:100%;height:auto;max-height:78vh}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:20;background:var(--parchment);display:grid;place-items:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:fade .3s ease}
@@ -265,7 +333,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
-<header class="top" data-src>
+<header class="top">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Sambriddhi, home">Sambriddhi</a>
     <nav aria-label="Sections">
@@ -279,7 +347,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
   </div>
 </header>
 
-<main data-src>
+<main>
 
   <!-- HOME: just the four sections -->
   <section class="view" data-view="home">
@@ -292,8 +360,8 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
       <div class="range">
         <a class="box plate" href="#art" style="--c:var(--cherry)"><span class="label" id="count-art">1 piece</span><div class="window"><canvas data-kind="art" data-i="0" aria-hidden="true"></canvas></div><h3>Art</h3><span class="label">The gallery wall</span><span class="go">Enter</span></a>
         <a class="box plate" href="#crochet" style="--c:var(--rust)"><span class="label" id="count-cro">1 project</span><div class="window"><canvas data-kind="crochet" data-i="0" aria-hidden="true"></canvas></div><h3>Crochet</h3><span class="label">The yarn basket</span><span class="go">Enter</span></a>
-        <a class="box plate" href="#books" style="--c:var(--cocoa)"><span class="label">1 review</span><div class="window"><canvas data-kind="shelf" aria-hidden="true"></canvas></div><h3>Book reviews</h3><span class="label">The card catalogue</span><span class="go">Enter</span></a>
-        <a class="box plate" href="#misc" style="--c:var(--camel);--on:var(--ink)"><span class="label">8 scraps</span><div class="window"><canvas data-kind="misc" aria-hidden="true"></canvas></div><h3>Miscellaneous</h3><span class="label">The corkboard</span><span class="go">Enter</span></a>
+        <a class="box plate" href="#books" style="--c:var(--cocoa)"><span class="label" id="count-books">1 review</span><div class="window"><canvas data-kind="shelf" aria-hidden="true"></canvas></div><h3>Book reviews</h3><span class="label">The card catalogue</span><span class="go">Enter</span></a>
+        <a class="box plate" href="#misc" style="--c:var(--camel);--on:var(--ink)"><span class="label" id="count-misc">8 scraps</span><div class="window"><canvas data-kind="misc" aria-hidden="true"></canvas></div><h3>Miscellaneous</h3><span class="label">The corkboard</span><span class="go">Enter</span></a>
       </div>
     </div>
   </section>
@@ -308,7 +376,6 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     </div>
     <div class="wall">
       <div class="wrap page-body">
-        <div class="owner-bar" data-owner hidden><button type="button" class="add-btn" data-add="art">+ Add a piece</button><button type="button" class="ghost-btn" data-download>Download site file</button><span class="owner-note">Only people who can edit the site see these buttons.</span></div>
         <div class="salon" id="art-grid"></div>
       </div>
     </div>
@@ -324,7 +391,6 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     </div>
     <div class="gingham">
       <div class="wrap page-body">
-        <div class="owner-bar" data-owner hidden><button type="button" class="add-btn" data-add="crochet">+ Add a project</button><button type="button" class="ghost-btn" data-download>Download site file</button><span class="owner-note">Only people who can edit the site see these buttons.</span></div>
         <div class="patterns" id="cro-grid"></div>
       </div>
     </div>
@@ -361,7 +427,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
   </section>
 </main>
 
-<footer data-src>
+<footer>
   <div class="band" style="--c:var(--oxblood)">
     <div class="wrap contact-in">
       <div class="pitch">
@@ -376,10 +442,10 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
       </div>
       <dl class="channels">
         <div><dt>Email</dt><dd><span class="sel" id="email">hello@yourname.com</span><button class="copy" type="button" id="copy-email">Copy</button></dd></div>
-        <div><dt>Instagram</dt><dd>@yourhandle</dd></div>
-        <div><dt>Ravelry</dt><dd>yourhandle</dd></div>
-        <div><dt>StoryGraph</dt><dd>yourhandle</dd></div>
-        <div><dt>Based in</dt><dd>Your city</dd></div>
+        <div><dt>Instagram</dt><dd id="c-instagram">@yourhandle</dd></div>
+        <div><dt>Ravelry</dt><dd id="c-ravelry">yourhandle</dd></div>
+        <div><dt>StoryGraph</dt><dd id="c-storygraph">yourhandle</dd></div>
+        <div><dt>Based in</dt><dd id="c-city">Your city</dd></div>
       </dl>
     </div>
   </div>
@@ -391,7 +457,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
   </div>
 </footer>
 
-<div class="lb" id="lb" data-src hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <button class="lb-close" id="lb-close" type="button">Close</button>
   <div class="lb-card">
     <div class="mat plate"><div class="img" id="lb-img"><canvas id="lb-canvas"></canvas><img id="lb-photo" class="photo" alt="" hidden></div></div>
@@ -400,59 +466,21 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
       <h2 id="lb-title"></h2>
       <dl id="lb-dl"></dl>
       <p id="lb-note"></p>
-      <button type="button" class="remove-btn" id="lb-remove" hidden>Remove this piece</button>
-      <p class="lb-msg" id="lb-msg" role="status"></p>
     </div>
   </div>
 </div>
 
-<div class="sheet" id="sheet" data-src hidden role="dialog" aria-modal="true" aria-labelledby="sheet-title" data-kind="art">
-  <form class="sheet-card" id="sheet-form" novalidate>
-    <div class="sheet-head"><span class="label" id="sheet-kind">Art</span><h2 id="sheet-title">Add a piece</h2></div>
-    <label class="drop" for="f-photo"><input type="file" id="f-photo" accept="image/*"><img id="f-preview" alt="" hidden><b id="f-drop-big">Choose a photo</b><span id="f-drop-text">JPG or PNG. Big photos are shrunk to fit.</span></label>
-    <div class="fields">
-      <label for="f-title">Title<input id="f-title" maxlength="80" autocomplete="off"></label>
-      <div class="pair art-only">
-        <label for="f-medium">Medium<input id="f-medium" placeholder="Watercolour" maxlength="60"></label>
-        <label for="f-size">Size<input id="f-size" placeholder="A4" maxlength="60"></label>
-      </div>
-      <div class="pair cro-only">
-        <label for="f-status">Status<select id="f-status"><option value="done">Finished</option><option value="wip">On the hook</option></select></label>
-        <label for="f-hook">Hook size<input id="f-hook" placeholder="5.0 mm" maxlength="30"></label>
-        <label for="f-yarn">Yarn<input id="f-yarn" placeholder="Worsted wool" maxlength="80"></label>
-        <label for="f-hours">Hours<input id="f-hours" placeholder="12" maxlength="30"></label>
-      </div>
-      <label for="f-date">When<input id="f-date" placeholder="October 2026" maxlength="40"></label>
-      <label for="f-note">A line about it<textarea id="f-note" rows="3" maxlength="400"></textarea></label>
-    </div>
-    <p class="sheet-msg" id="sheet-msg" role="status"></p>
-    <div class="sheet-actions"><button type="button" class="ghost" id="sheet-cancel">Cancel</button><button type="submit" class="solid" id="sheet-save">Add to the site</button></div>
-  </form>
-</div>
-
-<script type="application/json" id="pieces" data-src>{"art": [{"t": "Harbour at 6am", "m": "Watercolour", "s": "A4 (21 × 29.7 cm)", "y": "September 2026", "st": "wash", "r": "r45", "pal": ["#C9B8A0", "#D9A890", "#8A5A48", "#4A2E26"], "n": "Painted wet-on-wet before the fishing boats went out. Three layers, with the paper left bare for the light on the water."}], "crochet": [{"t": "Granny square cardigan", "st": "granny", "done": false, "hook": "5.0 mm", "yarn": "Worsted wool, nine colours", "hrs": "62 so far", "y": "Begun August 2026", "pal": ["#EDE3D3", "#7A2A30", "#B5674F", "#8A6A4A", "#3E2A22"], "n": "Forty-eight squares joined and one sleeve finished. The second sleeve is on the hook."}]}</script>
-
-<script data-src>
-/* Capture the page's own source first, before anything renders, so editors can republish it with new pieces. */
-const SOURCE=[...document.querySelectorAll("[data-src]")].filter(n=>n.parentElement===document.body||n.parentElement===document.head).map(n=>n.outerHTML);
-/* ---------- data ----------
-   Art and crochet pieces live in the JSON block above (id="pieces"). On the live site, editors add and remove them with the buttons on each page. */
-const DATA=(()=>{try{return JSON.parse(document.getElementById("pieces").textContent)}catch(_){return {art:[],crochet:[]}}})();
-let ART=DATA.art||[],CRO=DATA.crochet||[];
-const BOOKS = [
-  {t:"Piranesi", a:"Susanna Clarke", r:5, p:272, d:"2026-10-12", g:"Fantasy", c:"#4E3326", rev:"A strange, quiet book about a man who lives in an endless house of statues and tides. It reads like a puzzle and a prayer at once. I finished it in two sittings, then sat in silence for a while.", tags:["Worth re-reading","Short"]},
-];
-const NOTES = [
-  {k:"photo", t:"Small Joys, issue one", w:"Zine · September 2026", p:"Twelve pages folded from A3, printed in two colours. Thirty copies, gone by noon. Issue two is about rainy days."},
-  {k:"list", t:"Currently", items:[["Reading","Braiding Sweetgrass, again"],["Hooking","Cardigan, sleeve two"],["Painting","A series of tiny skies"],["Learning","Lino printing"]]},
-  {k:"stat", t:"Books read in 2026", big:"37", p:"The goal was thirty. Audiobooks during long crochet sessions helped."},
-  {k:"note", t:"Sourdough, attempt four", w:"October 2026", p:"Finally an ear on the loaf. The crumb is still tight, so next time it gets a longer bulk ferment and a hotter oven."},
-  {k:"list", t:"Where I sketch", items:[["Mondays","The library steps"],["Saturdays","The market"],["Daily","The 7:40 train"],["Rarely","My own kitchen"]]},
-  {k:"stat", t:"Houseplants", big:"14", p:"One loss this year. Farewell, basil.", alt:true},
-  {k:"note", t:"First lino print", w:"October 2026", p:"A small fern. I cut too deep on one leaf, but the third pull came out crisp. I'm hooked."},
-  {k:"list", t:"Next to make", items:[["Craft","Embroidered denim jacket"],["Crochet","A full chess set"],["Paint","A thirty-day sky journal"],["Other","Bind my own sketchbook"]]}
-];
-
+<script>
+/* ---------- turn the lists at the top of this file into what the page draws ---------- */
+const ART_STYLES=["wash","leaf","blocks","lines","still","hatch"];
+const ART_PALS=[["#C9B8A0","#D9A890","#8A5A48","#4A2E26"],["#EADFCB","#7A4A36","#9A6A4A","#4A2E22"],["#C98A6A","#6E3A34","#2A1A16","#E8C9A0"],["#EFE6D6","#C98A7A","#2A1C18"],["#D8CBB8","#6E4A3A","#EDE4D4","#B5452F"],["#EEE6D8","#3A2A24"]];
+const CRO_STYLES=["granny","stripes","c2c","mesh","spiral"];
+const CRO_PALS=[["#EDE3D3","#7A2A30","#B5674F","#8A6A4A","#3E2A22"],["#E3CBA8","#C98A6A","#A0524A","#7A2A30","#4A2A24"],["#D9CBB5","#2A1C18","#B5674F","#C98A7A"],["#E3D6C2","#6E3A2E"],["#EADCC6","#A0683F","#6E2A28"]];
+const list=x=>Array.isArray(x)?x.filter(Boolean):[];
+const ARTS=list(typeof ART!=="undefined"?ART:[]).map((a,i)=>({t:a.title||"Untitled",img:a.photo||"",m:a.medium||"",s:a.size||"",y:a.date||"",n:a.note||"",st:ART_STYLES[i%ART_STYLES.length],pal:ART_PALS[i%ART_PALS.length],r:"r45"}));
+const CROS=list(typeof CROCHET!=="undefined"?CROCHET:[]).map((a,i)=>({t:a.title||"Untitled",img:a.photo||"",done:!!a.finished,hook:a.hook||"",yarn:a.yarn||"",hrs:a.hours==null?"":String(a.hours),y:a.date||"",n:a.note||"",st:CRO_STYLES[i%CRO_STYLES.length],pal:CRO_PALS[i%CRO_PALS.length]}));
+const BOOKS=list(typeof BOOK_REVIEWS!=="undefined"?BOOK_REVIEWS:[]).map(b=>({t:b.title||"Untitled",a:b.author||"Unknown",r:+b.rating||0,p:b.pages||"",d:b.dateRead||"",g:b.genre||"",rev:b.review||"",tags:list(b.tags)}));
+const NOTES=list(typeof MISC!=="undefined"?MISC:[]).map((n,i)=>({k:n.kind==="photo"?"photo":n.kind||"note",t:n.title||"",w:n.when||"",p:n.text||"",items:list(n.items),big:n.number==null?"":String(n.number),photo:n.photo||"",alt:i%2===1}));
 /* ---------- drawing ---------- */
 function rng(seed){let a=seed>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function hexA(h,a){const n=parseInt(h.slice(1),16);return`rgba(${n>>16&255},${n>>8&255},${n&255},${a})`}
@@ -536,14 +564,14 @@ function paint(cv){
   if(cv.width!==Math.round(w*d)||cv.height!==Math.round(h*d)){cv.width=Math.round(w*d);cv.height=Math.round(h*d)}
   const c=cv.getContext("2d");c.setTransform(d,0,0,d,0,0);c.clearRect(0,0,w,h);
   const k=cv.dataset.kind,i=+cv.dataset.i;
-  if(k==="art"){const a=ART[i];if(a&&a.st)ARTDRAW[a.st](c,w,h,rng(i*97+13),a.pal)}
-  else if(k==="crochet"){const a=CRO[i];if(a&&a.st)CRODRAW[a.st](c,w,h,rng(i*53+7),a.pal)}
+  if(k==="art"){const a=ARTS[i];if(a&&a.st)ARTDRAW[a.st](c,w,h,rng(i*97+13),a.pal)}
+  else if(k==="crochet"){const a=CROS[i];if(a&&a.st)CRODRAW[a.st](c,w,h,rng(i*53+7),a.pal)}
   else if(k==="shelf")drawShelf(c,w,h);
   else if(k==="misc")drawMisc(c,w,h);
 }
 function swapPhotos(){
   document.querySelectorAll("canvas[data-kind]").forEach(cv=>{
-    const k=cv.dataset.kind,i=+cv.dataset.i,a=k==="art"?ART[i]:k==="crochet"?CRO[i]:null;
+    const k=cv.dataset.kind,i=+cv.dataset.i,a=k==="art"?ARTS[i]:k==="crochet"?CROS[i]:null;
     if(!a||!a.img)return;
     const im=new Image();im.src=a.img;im.alt=a.t;im.loading="lazy";im.className="photo";cv.replaceWith(im);
   });
@@ -559,21 +587,22 @@ function chips(el,opts,onPick){
 let artF="All",croF="All",bookF="All";
 const FRAME_W={r45:260,r11:230,r34:250,r54:320};
 function renderArt(){
-  document.getElementById("art-grid").innerHTML=ART.map((a,i)=>({a,i})).filter(({a})=>artF==="All"||a.m===artF).map(({a,i})=>
-    `<button class="hang" type="button" data-open="art" data-i="${i}" style="--w:${FRAME_W[a.r]||260}px"><div class="frame"><div class="mat2"><div class="img ${a.r||"r45"}"><canvas data-kind="art" data-i="${i}" aria-hidden="true"></canvas></div></div></div><div class="walllabel"><b>${esc(a.t)}</b><span>${esc([a.m,a.s].filter(Boolean).join(", "))}</span><span>${esc(a.y)}</span></div></button>`).join("");
-  if(!ART.length)document.getElementById("art-grid").innerHTML='<p class="empty">No pieces on the wall yet.</p>';
+  document.getElementById("art-grid").innerHTML=ARTS.map((a,i)=>({a,i})).filter(({a})=>artF==="All"||a.m===artF).map(({a,i})=>
+    `<button class="hang" type="button" data-open="art" data-i="${i}" style="--w:${FRAME_W[a.r]||260}px"><div class="frame"><div class="mat2">${a.img?`<div class="img auto"><img class="photo" src="${esc(a.img)}" alt="${esc(a.t)}" loading="lazy"></div>`:`<div class="img ${a.r||"r45"}"><canvas data-kind="art" data-i="${i}" aria-hidden="true"></canvas></div>`}</div></div><div class="walllabel"><b>${esc(a.t)}</b><span>${esc([a.m,a.s].filter(Boolean).join(", "))}</span><span>${esc(a.y)}</span></div></button>`).join("");
+  if(!ARTS.length)document.getElementById("art-grid").innerHTML='<p class="empty">No pieces on the wall yet.</p>';
+  document.querySelectorAll("#art-grid img.photo").forEach(im=>{const fit=()=>{const r=im.naturalWidth/im.naturalHeight;if(r)im.closest(".hang").style.setProperty("--w",(r>1.15?330:r<.85?240:280)+"px")};im.complete?fit():im.addEventListener("load",fit,{once:true})});
   updateCounts();swapPhotos();paintVisible();
 }
 function renderCro(){
-  document.getElementById("cro-grid").innerHTML=CRO.map((a,i)=>({a,i})).map(({a,i})=>
-    `<button class="yarn" type="button" data-open="crochet" data-i="${i}"><span class="tag ${a.done?"":"wip"}">${a.done?"Finished":"On the hook"}</span><div class="img r11"><canvas data-kind="crochet" data-i="${i}" aria-hidden="true"></canvas></div><div class="chain" aria-hidden="true"></div><div class="band-label"><span class="label">${esc(a.y)}</span><b>${esc(a.t)}</b></div><dl class="specs"><div><dt>Hook</dt><dd>${esc(a.hook)}</dd></div><div><dt>Hours</dt><dd>${esc(a.hrs)}</dd></div><div class="wide"><dt>Yarn</dt><dd>${esc(a.yarn)}</dd></div></dl></button>`).join("");
-  if(!CRO.length)document.getElementById("cro-grid").innerHTML='<p class="empty">No projects in the basket yet.</p>';
+  document.getElementById("cro-grid").innerHTML=CROS.map((a,i)=>({a,i})).map(({a,i})=>
+    `<button class="yarn" type="button" data-open="crochet" data-i="${i}"><span class="tag ${a.done?"":"wip"}">${a.done?"Finished":"On the hook"}</span><div class="img r11"><canvas data-kind="crochet" data-i="${i}" aria-hidden="true"></canvas></div><div class="chain" aria-hidden="true"></div><div class="band-label"><span class="label">${esc(a.y)}</span><b>${esc(a.t)}</b></div><dl class="specs"><div><dt>Hook</dt><dd>${esc(a.hook||"–")}</dd></div><div><dt>Hours</dt><dd>${esc(a.hrs||"–")}</dd></div>${a.yarn?`<div class="wide"><dt>Yarn</dt><dd>${esc(a.yarn)}</dd></div>`:""}</dl></button>`).join("");
+  if(!CROS.length)document.getElementById("cro-grid").innerHTML='<p class="empty">No projects in the basket yet.</p>';
   updateCounts();swapPhotos();paintVisible();
 }
 function updateCounts(){
-  const ca=document.getElementById("count-art"),cc=document.getElementById("count-cro");
-  if(ca)ca.textContent=ART.length+(ART.length===1?" piece":" pieces");
-  if(cc)cc.textContent=CRO.length+(CRO.length===1?" project":" projects");
+  const set=(id,n,one,many)=>{const el=document.getElementById(id);if(el)el.textContent=n+" "+(n===1?one:many)};
+  set("count-art",ARTS.length,"piece","pieces");set("count-cro",CROS.length,"project","projects");
+  set("count-books",BOOKS.length,"review","reviews");set("count-misc",NOTES.length,"scrap","scraps");
 }
 const CALL={"Fantasy":"FIC","Literary fiction":"FIC","Sci-fi":"SF","Non-fiction":"NF"};
 function renderBooks(){
@@ -581,13 +610,13 @@ function renderBooks(){
   const list=BOOKS.filter(b=>bookF==="All"||b.g===bookF).sort((a,b)=>sort==="rating"?b.r-a.r||b.d.localeCompare(a.d):sort==="title"?a.t.localeCompare(b.t):b.d.localeCompare(a.d));
   document.getElementById("book-list").innerHTML=list.map((b,idx)=>{
     const parts=b.a.split(" "),last=parts.pop(),first=parts.join(" ");
-    const read=new Date(b.d+"T12:00:00").toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).toUpperCase();
+    const dt=b.d?new Date(b.d+"T12:00:00"):null,read=dt&&!isNaN(dt)?dt.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}).toUpperCase():"";
     const stars="★".repeat(Math.floor(b.r))+(b.r%1?"½":"")+"☆".repeat(5-Math.ceil(b.r));
     return `<article class="card" style="--tilt:${idx%2?".6":"-.7"}deg">
       <div class="card-top"><div class="callno">${CALL[b.g]||"GEN"} ${esc(last.slice(0,3).toUpperCase())}<span>${esc(b.g)}</span></div><div class="score-stamp" aria-label="${b.r} out of 5"><b>${b.r}</b><small>of 5</small></div></div>
-      <div class="card-head"><h3>${esc(b.t)}</h3><div class="auth">${esc(last)}, ${esc(first)} · ${b.p} p.</div><div class="tstars" aria-hidden="true">${stars}</div></div>
+      <div class="card-head"><h3>${esc(b.t)}</h3><div class="auth">${esc(first?last+", "+first:last)}${b.p?` · ${esc(b.p)} p.`:""}</div><div class="tstars" aria-hidden="true">${stars}</div></div>
       <p class="ruled">${esc(b.rev)}</p>
-      <div class="card-foot"><span class="subjects">Subjects: ${b.tags.map(esc).join(" — ")}</span><span class="stamp">Read ${read}</span></div>
+      <div class="card-foot"><span class="subjects">${b.tags.length?"Subjects: "+b.tags.map(esc).join(" — "):""}</span>${read?`<span class="stamp">Read ${read}</span>`:""}</div>
     </article>`}).join("");
 }
 const TILTS=[-2,1.6,-1.1,2.2,-1.6,1,-2.2,1.3];
@@ -595,7 +624,7 @@ function torn(seed){const r=rng(seed);const pts=[];for(let x=0;x<=100;x+=4)pts.p
 function renderBoard(){
   document.getElementById("board").innerHTML=NOTES.map((n,i)=>{
     const t=`--tilt:${TILTS[i%TILTS.length]}deg`;
-    if(n.k==="photo")return`<div class="scrap tape shadow" style="${t}"><figure class="polaroid" style="margin:0"><div class="img"><canvas data-kind="misc" aria-hidden="true"></canvas></div><figcaption class="cap">${esc(n.t)}</figcaption><p><span class="label">${esc(n.w)}</span><br>${esc(n.p)}</p></figure></div>`;
+    if(n.k==="photo")return`<div class="scrap tape shadow" style="${t}"><figure class="polaroid" style="margin:0"><div class="img">${n.photo?`<img class="photo" src="${esc(n.photo)}" alt="${esc(n.t)}" loading="lazy">`:`<canvas data-kind="misc" aria-hidden="true"></canvas>`}</div><figcaption class="cap">${esc(n.t)}</figcaption><p><span class="label">${esc(n.w)}</span><br>${esc(n.p)}</p></figure></div>`;
     if(n.k==="list")return`<div class="scrap pin shadow" style="${t}"><div class="notebook" style="clip-path:${torn(i*31+5)}"><h3>${esc(n.t)}</h3><ul>${n.items.map(([a,b])=>`<li><em>${esc(a)}</em><span>${esc(b)}</span></li>`).join("")}</ul></div></div>`;
     if(n.k==="stat")return`<div class="scrap shadow" style="${t}"><div class="ticket${n.alt?" alt":""}"><div class="main"><span class="label">${esc(n.t)}</span><div class="big">${esc(n.big)}</div><p>${esc(n.p)}</p></div><div class="stub"><span>Tally · 2026</span></div></div></div>`;
     return`<div class="scrap tape shadow" style="${t}"><div class="sticky"><span class="when">${esc(n.w)}</span><h3>${esc(n.t)}</h3><p>${esc(n.p)}</p></div></div>`;
@@ -606,14 +635,13 @@ function renderBoard(){
 /* ---------- lightbox ---------- */
 const lb=document.getElementById("lb");let lastFocus=null;
 function openLB(kind,i){
-  const a=kind==="art"?ART[i]:CRO[i];
+  const a=kind==="art"?ARTS[i]:CROS[i];
   document.getElementById("lb-eyebrow").textContent=kind==="art"?"Art · "+a.m:"Crochet · "+(a.done?"Finished":"On the hook");
   document.getElementById("lb-title").textContent=a.t;
   const rows=(kind==="art"?[["Medium",a.m],["Size",a.s],["Made",a.y]]:[["Hook",a.hook],["Yarn",a.yarn],["Hours",a.hrs],["Date",a.y]]).filter(r=>r[1]);
   document.getElementById("lb-dl").innerHTML=rows.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
   document.getElementById("lb-note").textContent=a.n;
-  document.getElementById("lb-img").className="img "+(kind==="art"?(a.r||"r45"):"r11");
-  cur={kind,i};const rb=document.getElementById("lb-remove");rb.hidden=!OWNER;rb.classList.remove("armed");rb.textContent="Remove this piece";rb.disabled=false;document.getElementById("lb-msg").textContent="";
+  document.getElementById("lb-img").className="img "+(a.img?"auto":kind==="art"?(a.r||"r45"):"r11");document.getElementById("lb-photo").classList.toggle("fit",!!a.img);
   const cv=document.getElementById("lb-canvas");cv.dataset.kind=kind;cv.dataset.i=i;
   const ph=document.getElementById("lb-photo");
   if(a.img){ph.src=a.img;ph.alt=a.t;ph.hidden=false;cv.hidden=true}else{ph.hidden=true;ph.removeAttribute("src");cv.hidden=false}
@@ -625,172 +653,15 @@ document.getElementById("lb-close").onclick=closeLB;
 lb.addEventListener("click",e=>{if(e.target===lb)closeLB()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!lb.hidden)closeLB()});
 
-/* ---------- editing: only for people who can edit the live site ---------- */
-let OWNER=false,DOWNLOADS=null,cur=null,pending=null,DIRTY=0;
-/* Edit mode for a copy hosted elsewhere (e.g. GitHub Pages): open the site with ?edit at the end of the address,
-   add or remove pieces, then download the updated index.html and upload it to the repository. */
-const FILE_MODE=!(window.claude&&typeof window.claude.use==="function")&&/[?&]edit\b/.test(location.search);
-const FALLBACK_RESET=":root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}";
-function buildDoc(){
-  const json=JSON.stringify({art:ART,crochet:CRO}).replace(/</g,"\\u003c");
-  const open='<scr'+'ipt type="application/json" id="pieces"';
-  const parts=SOURCE.map(h=>h.startsWith(open)?open+' data-src="">'+json+'</scr'+'ipt>':h);
-  const rs=document.head.querySelector("style:not([data-src])");
-  const reset=rs&&rs.textContent?rs.textContent:FALLBACK_RESET;
-  return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>'+reset+'</style></head><body>'+parts.join("\n")+'</body></html>';
-}
-async function publishDoc(){
-  const art=(window.claude&&typeof claude.use==="function")?await claude.use("artifact"):null;
-  if(!art)throw {code:"unavailable"};
-  const html=buildDoc();
-  if(html.length>15500000)throw {code:"too_large"};
-  return art.publish(html);
-}
-const ERR={
-  conflict:"A newer version was just saved, so the page is reloading. Try again once it refreshes.",
-  not_writer:"This view can't save changes. Only people with edit access can change the site.",
-  not_granted:"This view can't save changes. Only people with edit access can change the site.",
-  too_large:"The site is full. Try a smaller photo, or remove an old piece first.",
-  rate_limited:"Saving too often. Wait a minute, then try again.",
-  unavailable:"Saving only works on the live site, not in a downloaded copy."
-};
-const errText=e=>ERR[e&&e.code]||"Couldn't save. Check your connection and try again.";
-
-(async()=>{
-  if(FILE_MODE){enableFileMode();return}
-  if(!window.claude||typeof claude.use!=="function")return;
-  try{
-    const [user,art]=await Promise.all([claude.use("user"),claude.use("artifact")]);
-    if(!user||!art)return;
-    if(!(await user.canEdit()))return;
-    OWNER=true;
-    document.querySelectorAll("[data-owner]").forEach(el=>el.hidden=false);
-    DOWNLOADS=await claude.use("downloads");
-    if(!DOWNLOADS)document.querySelectorAll("[data-download]").forEach(b=>b.hidden=true);
-  }catch(_){}
-})();
-
-function enableFileMode(){
-  OWNER=true;
-  document.querySelectorAll("[data-owner]").forEach(el=>el.hidden=false);
-  document.querySelectorAll("[data-download]").forEach(b=>b.textContent="Download updated index.html");
-  setOwnerNote();
-  window.addEventListener("beforeunload",e=>{if(DIRTY){e.preventDefault();e.returnValue=""}});
-}
-function setOwnerNote(text){
-  const t=text||(DIRTY
-    ?DIRTY+(DIRTY===1?" unsaved change. ":" unsaved changes. ")+"Download the updated index.html and upload it to GitHub to publish."
-    :"Edit mode. Changes stay on this computer until you download the updated index.html and upload it to GitHub.");
-  document.querySelectorAll(".owner-note").forEach(n=>n.textContent=t);
-}
-function fileModeChanged(){DIRTY++;renderArt();renderCro();setOwnerNote()}
-
-/* photo -> resized JPEG data URL, so it lives inside the page and everyone can see it */
-const SHAPES=[["r34",.75],["r45",.8],["r11",1],["r54",1.25]];
-function readPhoto(file){
-  return new Promise((resolve,reject)=>{
-    const url=URL.createObjectURL(file),im=new Image();
-    im.onload=()=>{
-      try{
-        const max=1400,sc=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight));
-        const w=Math.max(1,Math.round(im.naturalWidth*sc)),h=Math.max(1,Math.round(im.naturalHeight*sc));
-        const c=document.createElement("canvas");c.width=w;c.height=h;
-        const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);
-        const ratio=w/h;let r="r45",best=9;SHAPES.forEach(([k,v])=>{const d=Math.abs(Math.log(ratio/v));if(d<best){best=d;r=k}});
-        resolve({data:c.toDataURL("image/jpeg",.82),r});
-      }catch(err){reject(err)}finally{URL.revokeObjectURL(url)}
-    };
-    im.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("decode"))};
-    im.src=url;
+/* ---------- contact details from the CONTACT list at the top ---------- */
+(()=>{
+  if(typeof CONTACT==="undefined")return;
+  [["email","email"],["instagram","c-instagram"],["ravelry","c-ravelry"],["storygraph","c-storygraph"],["city","c-city"]].forEach(([k,id])=>{
+    const el=document.getElementById(id);if(!el)return;
+    const v=String(CONTACT[k]||"").trim();
+    if(v)el.textContent=v;else el.closest("div").hidden=true;
   });
-}
-
-const sheet=document.getElementById("sheet"),form=document.getElementById("sheet-form"),msg=document.getElementById("sheet-msg");
-const $=id=>document.getElementById(id);
-let sheetOpener=null;
-function openSheet(kind){
-  form.reset();pending=null;msg.textContent="";
-  $("f-preview").hidden=true;$("f-preview").removeAttribute("src");
-  $("f-drop-big").textContent="Choose a photo";$("f-drop-text").textContent="JPG or PNG. Big photos are shrunk to fit.";
-  sheet.dataset.kind=kind;
-  $("sheet-kind").textContent=kind==="art"?"Art":"Crochet";
-  $("sheet-title").textContent=kind==="art"?"Add a piece":"Add a project";
-  $("sheet-save").disabled=false;$("sheet-save").textContent="Add to the site";
-  sheetOpener=document.activeElement;sheet.hidden=false;document.body.style.overflow="hidden";$("f-photo").focus();
-}
-function closeSheet(){sheet.hidden=true;document.body.style.overflow="";if(sheetOpener)sheetOpener.focus()}
-document.addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b&&OWNER)openSheet(b.dataset.add)});
-$("sheet-cancel").addEventListener("click",closeSheet);
-sheet.addEventListener("click",e=>{if(e.target===sheet&&!$("sheet-save").disabled)closeSheet()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden&&!$("sheet-save").disabled)closeSheet()});
-$("f-photo").addEventListener("change",async e=>{
-  const f=e.target.files&&e.target.files[0];if(!f)return;
-  msg.textContent="";$("f-drop-big").textContent="Reading photo…";
-  try{
-    pending=await readPhoto(f);
-    $("f-preview").src=pending.data;$("f-preview").hidden=false;
-    $("f-drop-big").textContent="Looks good";$("f-drop-text").textContent="Tap to choose a different photo.";
-    if(!$("f-title").value)$("f-title").value=f.name.replace(/\.[^.]+$/,"").replace(/[-_]+/g," ").trim().slice(0,80);
-  }catch(_){
-    pending=null;$("f-drop-big").textContent="Choose a photo";
-    msg.textContent="Couldn't read that photo. Try a JPG or PNG (iPhone HEIC photos may need converting first).";
-  }
-});
-form.addEventListener("submit",async e=>{
-  e.preventDefault();
-  const kind=sheet.dataset.kind,v=id=>$(id).value.trim();
-  if(!pending){msg.textContent="Choose a photo first.";return}
-  if(!v("f-title")){msg.textContent="Give it a title.";$("f-title").focus();return}
-  const entry=kind==="art"
-    ?{t:v("f-title"),m:v("f-medium"),s:v("f-size"),y:v("f-date"),n:v("f-note"),img:pending.data,r:pending.r}
-    :{t:v("f-title"),done:$("f-status").value==="done",hook:v("f-hook"),yarn:v("f-yarn"),hrs:v("f-hours"),y:v("f-date"),n:v("f-note"),img:pending.data};
-  const list=kind==="art"?ART:CRO;
-  list.unshift(entry);
-  if(FILE_MODE){closeSheet();fileModeChanged();return}
-  $("sheet-save").disabled=true;$("sheet-save").textContent="Saving…";
-  msg.textContent="Saving. The page will refresh with your new "+(kind==="art"?"piece":"project")+" in a moment.";
-  try{await publishDoc()}
-  catch(err){
-    list.shift();
-    msg.textContent=errText(err);
-    $("sheet-save").disabled=false;$("sheet-save").textContent="Add to the site";
-  }
-});
-
-/* remove from the lightbox: tap twice */
-let armTimer=null;
-$("lb-remove").addEventListener("click",async e=>{
-  const b=e.currentTarget;if(!OWNER||!cur)return;
-  if(!b.classList.contains("armed")){
-    b.classList.add("armed");b.textContent="Tap again to remove";
-    clearTimeout(armTimer);armTimer=setTimeout(()=>{b.classList.remove("armed");b.textContent="Remove this piece"},4000);
-    return;
-  }
-  clearTimeout(armTimer);
-  const list=cur.kind==="art"?ART:CRO,removed=list.splice(cur.i,1)[0];
-  if(FILE_MODE){closeLB();fileModeChanged();return}
-  b.disabled=true;b.textContent="Removing…";$("lb-msg").textContent="";
-  try{await publishDoc()}
-  catch(err){
-    list.splice(cur.i,0,removed);
-    b.disabled=false;b.classList.remove("armed");b.textContent="Remove this piece";
-    $("lb-msg").textContent=errText(err);
-  }
-});
-
-/* download the current site as one HTML file */
-document.addEventListener("click",async e=>{
-  const b=e.target.closest("[data-download]");if(!b)return;
-  if(FILE_MODE){
-    const url=URL.createObjectURL(new Blob([buildDoc()],{type:"text/html"}));
-    const a=document.createElement("a");a.href=url;a.download="index.html";document.body.appendChild(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),5000);
-    DIRTY=0;setOwnerNote("Downloaded. Now upload index.html to your GitHub repository, replacing the old one. The site updates a minute or two later.");
-    return;
-  }
-  if(!DOWNLOADS)return;
-  try{await DOWNLOADS.save({filename:"sambriddhi-portfolio.html",data:new Blob([buildDoc()],{type:"text/html"})})}catch(_){}
-});
+})();
 
 /* ---------- copy email ---------- */
 document.getElementById("copy-email").addEventListener("click",e=>{
@@ -818,4 +689,6 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 route();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(paintVisible);
 </script>
-</body></html>
+
+</body>
+</html>
