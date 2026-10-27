@@ -213,11 +213,9 @@ const MISC = [
 
 // Leave any of these as "" to hide that line.
 const CONTACT = {
-  email: "hello@yourname.com",
-  instagram: "@yourhandle",
-  ravelry: "yourhandle",
-  storygraph: "yourhandle",
-  city: "Your city"
+  email: "sambriddhi899.com",
+  instagram: "@sammiiexo3",
+  city: "Kathmandu"
 };
 </script>
 <!-- ======================= end of the edit area ======================= -->
@@ -498,7 +496,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     <div class="band head" style="--c:var(--cherry)">
       <div class="wrap head-in">
         <div><span class="label">Paintings &amp; drawings · 2026</span><h1>Art</h1><span class="sub">the gallery wall</span></div>
-        <p class="lede">Small works, mostly made before breakfast. Select a frame to see its medium, size and the story behind it.</p>
+        <p class="lede">Small works, mostly made before breakfast. Select a frame to see its medium, size </p>
       </div>
     </div>
     <div class="wall">
@@ -528,7 +526,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     <div class="band head" style="--c:var(--cocoa)">
       <div class="wrap head-in">
         <div><span class="label">Reading log</span><h1>Book reviews</h1><span class="sub">stamped &amp; filed</span></div>
-        <p class="lede">Short and spoiler-free, filed like an old library catalogue. Rated out of five, and the fives are rare.</p>
+        <p class="lede">Short and spoiler-free, filed like an old library catalogue. Rated out of five,</p>
       </div>
     </div>
     <div class="desk">
@@ -543,7 +541,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     <div class="band head" style="--c:var(--camel);--on:var(--ink);--pop:var(--cherry)">
       <div class="wrap head-in">
         <div><span class="label">Everything else</span><h1>Miscellaneous</h1><span class="sub">pinned up for now</span></div>
-        <p class="lede">Side projects, lists, small wins and experiments still in progress.</p>
+        <p class="lede">Side projects, lists, small wins and experiments </p>
       </div>
     </div>
     <div class="cork">
@@ -562,17 +560,12 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
         <h2>Write to me <span class="script">I always write back</span></h2>
         <p>Ask about a painting, a custom crochet piece, or tell me what you're reading. I answer every message, usually within a week.</p>
         <ul class="open">
-          <li>Small watercolour and gouache commissions</li>
-          <li>Custom crochet orders, by arrangement</li>
-          <li>Book club guest spots and reading swaps</li>
-        </ul>
+                 </ul>
       </div>
       <dl class="channels">
-        <div><dt>Email</dt><dd><span class="sel" id="email">hello@yourname.com</span><button class="copy" type="button" id="copy-email">Copy</button></dd></div>
-        <div><dt>Instagram</dt><dd id="c-instagram">@yourhandle</dd></div>
-        <div><dt>Ravelry</dt><dd id="c-ravelry">yourhandle</dd></div>
-        <div><dt>StoryGraph</dt><dd id="c-storygraph">yourhandle</dd></div>
-        <div><dt>Based in</dt><dd id="c-city">Your city</dd></div>
+        <div><dt>Email</dt><dd><span class="sel" id="email">sambriddhi899@gmail.com</span><button class="copy" type="button" id="copy-email">Copy</button></dd></div>
+        <div><dt>Instagram</dt><dd id="c-instagram">@sammiiexo3</dd></div>
+                <div><dt>Based in</dt><dd id="c-city">Kathmandu</dd></div>
       </dl>
     </div>
   </div>
@@ -783,7 +776,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!lb.hidden)closeLB(
 /* ---------- contact details from the CONTACT list at the top ---------- */
 (()=>{
   if(typeof CONTACT==="undefined")return;
-  [["email","email"],["instagram","c-instagram"],["ravelry","c-ravelry"],["storygraph","c-storygraph"],["city","c-city"]].forEach(([k,id])=>{
+  [["email","email"],["instagram","c-instagram"],["city","c-city"]].forEach(([k,id])=>{
     const el=document.getElementById(id);if(!el)return;
     const v=String(CONTACT[k]||"").trim();
     if(v)el.textContent=v;else el.closest("div").hidden=true;
