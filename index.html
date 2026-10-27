@@ -626,7 +626,10 @@ lb.addEventListener("click",e=>{if(e.target===lb)closeLB()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!lb.hidden)closeLB()});
 
 /* ---------- editing: only for people who can edit the live site ---------- */
-let OWNER=false,DOWNLOADS=null,cur=null,pending=null;
+let OWNER=false,DOWNLOADS=null,cur=null,pending=null,DIRTY=0;
+/* Edit mode for a copy hosted elsewhere (e.g. GitHub Pages): open the site with ?edit at the end of the address,
+   add or remove pieces, then download the updated index.html and upload it to the repository. */
+const FILE_MODE=!(window.claude&&typeof window.claude.use==="function")&&/[?&]edit\b/.test(location.search);
 const FALLBACK_RESET=":root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}";
 function buildDoc(){
   const json=JSON.stringify({art:ART,crochet:CRO}).replace(/</g,"\\u003c");
@@ -654,6 +657,7 @@ const ERR={
 const errText=e=>ERR[e&&e.code]||"Couldn't save. Check your connection and try again.";
 
 (async()=>{
+  if(FILE_MODE){enableFileMode();return}
   if(!window.claude||typeof claude.use!=="function")return;
   try{
     const [user,art]=await Promise.all([claude.use("user"),claude.use("artifact")]);
@@ -665,6 +669,21 @@ const errText=e=>ERR[e&&e.code]||"Couldn't save. Check your connection and try a
     if(!DOWNLOADS)document.querySelectorAll("[data-download]").forEach(b=>b.hidden=true);
   }catch(_){}
 })();
+
+function enableFileMode(){
+  OWNER=true;
+  document.querySelectorAll("[data-owner]").forEach(el=>el.hidden=false);
+  document.querySelectorAll("[data-download]").forEach(b=>b.textContent="Download updated index.html");
+  setOwnerNote();
+  window.addEventListener("beforeunload",e=>{if(DIRTY){e.preventDefault();e.returnValue=""}});
+}
+function setOwnerNote(text){
+  const t=text||(DIRTY
+    ?DIRTY+(DIRTY===1?" unsaved change. ":" unsaved changes. ")+"Download the updated index.html and upload it to GitHub to publish."
+    :"Edit mode. Changes stay on this computer until you download the updated index.html and upload it to GitHub.");
+  document.querySelectorAll(".owner-note").forEach(n=>n.textContent=t);
+}
+function fileModeChanged(){DIRTY++;renderArt();renderCro();setOwnerNote()}
 
 /* photo -> resized JPEG data URL, so it lives inside the page and everyone can see it */
 const SHAPES=[["r34",.75],["r45",.8],["r11",1],["r54",1.25]];
@@ -727,6 +746,7 @@ form.addEventListener("submit",async e=>{
     :{t:v("f-title"),done:$("f-status").value==="done",hook:v("f-hook"),yarn:v("f-yarn"),hrs:v("f-hours"),y:v("f-date"),n:v("f-note"),img:pending.data};
   const list=kind==="art"?ART:CRO;
   list.unshift(entry);
+  if(FILE_MODE){closeSheet();fileModeChanged();return}
   $("sheet-save").disabled=true;$("sheet-save").textContent="Saving…";
   msg.textContent="Saving. The page will refresh with your new "+(kind==="art"?"piece":"project")+" in a moment.";
   try{await publishDoc()}
@@ -748,6 +768,7 @@ $("lb-remove").addEventListener("click",async e=>{
   }
   clearTimeout(armTimer);
   const list=cur.kind==="art"?ART:CRO,removed=list.splice(cur.i,1)[0];
+  if(FILE_MODE){closeLB();fileModeChanged();return}
   b.disabled=true;b.textContent="Removing…";$("lb-msg").textContent="";
   try{await publishDoc()}
   catch(err){
@@ -759,7 +780,15 @@ $("lb-remove").addEventListener("click",async e=>{
 
 /* download the current site as one HTML file */
 document.addEventListener("click",async e=>{
-  const b=e.target.closest("[data-download]");if(!b||!DOWNLOADS)return;
+  const b=e.target.closest("[data-download]");if(!b)return;
+  if(FILE_MODE){
+    const url=URL.createObjectURL(new Blob([buildDoc()],{type:"text/html"}));
+    const a=document.createElement("a");a.href=url;a.download="index.html";document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+    DIRTY=0;setOwnerNote("Downloaded. Now upload index.html to your GitHub repository, replacing the old one. The site updates a minute or two later.");
+    return;
+  }
+  if(!DOWNLOADS)return;
   try{await DOWNLOADS.save({filename:"sambriddhi-portfolio.html",data:new Blob([buildDoc()],{type:"text/html"})})}catch(_){}
 });
 
