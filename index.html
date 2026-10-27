@@ -31,6 +31,8 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1;text-
 .band .label{color:inherit;opacity:.82}
 .img{max-width:100%}
 .img canvas{width:100%;height:100%;display:block}
+.photo{width:100%;height:100%;object-fit:cover;display:block}
+#lb-photo{object-fit:contain}
 .r45{aspect-ratio:4/5}.r11{aspect-ratio:1}.r34{aspect-ratio:3/4}.r54{aspect-ratio:5/4}
 
 /* vintage label plate */
@@ -120,7 +122,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 /* BOOKS: library cards on a desk */
 .desk{background-color:#3A2219;background-image:repeating-linear-gradient(100deg,rgba(255,255,255,.025) 0 2px,transparent 2px 9px),repeating-linear-gradient(94deg,rgba(0,0,0,.09) 0 1px,transparent 1px 27px);color:var(--cream)}
 .desk .chip[aria-pressed="true"]{background:var(--cream);border-color:var(--cream);color:var(--cocoa)}
-.catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 40px;align-items:start}
+.catalog{display:grid;grid-template-columns:minmax(0,640px);justify-content:center;gap:44px 40px;align-items:start}
 .card{background:#F6EDDA;color:var(--ink);font-family:var(--type);padding:20px 24px 22px;position:relative;box-shadow:0 16px 30px -12px rgba(0,0,0,.65);transform:rotate(var(--tilt,0deg));display:grid;gap:14px;min-width:0;border-radius:3px;transition:transform .3s}
 .card:hover{transform:rotate(0deg) translateY(-3px)}
 .card::before{content:"";position:absolute;top:0;left:50%;width:22px;height:11px;margin-left:-11px;background:#3A2219;border-radius:0 0 11px 11px}
@@ -260,9 +262,9 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
         <p>Four little rooms. Pick one.</p>
       </div>
       <div class="range">
-        <a class="box plate" href="#art" style="--c:var(--cherry)"><span class="label">8 pieces</span><div class="window"><canvas data-kind="art" data-i="3" aria-hidden="true"></canvas></div><h3>Art</h3><span class="label">The gallery wall</span><span class="go">Enter</span></a>
+        <a class="box plate" href="#art" style="--c:var(--cherry)"><span class="label">1 piece</span><div class="window"><canvas data-kind="art" data-i="0" aria-hidden="true"></canvas></div><h3>Art</h3><span class="label">The gallery wall</span><span class="go">Enter</span></a>
         <a class="box plate" href="#crochet" style="--c:var(--rust)"><span class="label">6 projects</span><div class="window"><canvas data-kind="crochet" data-i="0" aria-hidden="true"></canvas></div><h3>Crochet</h3><span class="label">The yarn basket</span><span class="go">Enter</span></a>
-        <a class="box plate" href="#books" style="--c:var(--cocoa)"><span class="label">6 reviews</span><div class="window"><canvas data-kind="shelf" aria-hidden="true"></canvas></div><h3>Book reviews</h3><span class="label">The card catalogue</span><span class="go">Enter</span></a>
+        <a class="box plate" href="#books" style="--c:var(--cocoa)"><span class="label">1 review</span><div class="window"><canvas data-kind="shelf" aria-hidden="true"></canvas></div><h3>Book reviews</h3><span class="label">The card catalogue</span><span class="go">Enter</span></a>
         <a class="box plate" href="#misc" style="--c:var(--camel);--on:var(--ink)"><span class="label">8 scraps</span><div class="window"><canvas data-kind="misc" aria-hidden="true"></canvas></div><h3>Miscellaneous</h3><span class="label">The corkboard</span><span class="go">Enter</span></a>
       </div>
     </div>
@@ -278,7 +280,6 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     </div>
     <div class="wall">
       <div class="wrap page-body">
-        <div class="filters" id="art-filters" role="group" aria-label="Filter by medium"></div>
         <div class="salon" id="art-grid"></div>
       </div>
     </div>
@@ -310,16 +311,6 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     </div>
     <div class="desk">
       <div class="wrap page-body">
-        <div class="tools">
-          <div class="filters" id="book-filters" role="group" aria-label="Filter by genre"></div>
-          <label class="sort label" for="book-sort">Sort
-            <select id="book-sort">
-              <option value="recent">Most recent</option>
-              <option value="rating">Highest rated</option>
-              <option value="title">Title A–Z</option>
-            </select>
-          </label>
-        </div>
         <div class="catalog" id="book-list"></div>
       </div>
     </div>
@@ -348,12 +339,18 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
         <span class="label">Get in touch</span>
         <h2>Write to me <span class="script">I always write back</span></h2>
         <p>Ask about a painting, a custom crochet piece, or tell me what you're reading. I answer every message, usually within a week.</p>
+        <ul class="open">
+          <li>Small watercolour and gouache commissions</li>
+          <li>Custom crochet orders, by arrangement</li>
+          <li>Book club guest spots and reading swaps</li>
+        </ul>
       </div>
       <dl class="channels">
-        <div><dt>Email</dt><dd><span class="sel" id="email">sambriddhi899@gmail.com</span><button class="copy" type="button" id="copy-email">Copy</button></dd></div>
-        <div><dt>Instagram</dt><dd>@ysammiiexo3</dd></div>
+        <div><dt>Email</dt><dd><span class="sel" id="email">hello@yourname.com</span><button class="copy" type="button" id="copy-email">Copy</button></dd></div>
+        <div><dt>Instagram</dt><dd>@yourhandle</dd></div>
         <div><dt>Ravelry</dt><dd>yourhandle</dd></div>
-        <div><dt>Based in</dt><dd>kathmandu</dd></div>
+        <div><dt>StoryGraph</dt><dd>yourhandle</dd></div>
+        <div><dt>Based in</dt><dd>Your city</dd></div>
       </dl>
     </div>
   </div>
@@ -368,7 +365,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <button class="lb-close" id="lb-close" type="button">Close</button>
   <div class="lb-card">
-    <div class="mat plate"><div class="img" id="lb-img"><canvas id="lb-canvas"></canvas></div></div>
+    <div class="mat plate"><div class="img" id="lb-img"><canvas id="lb-canvas"></canvas><img id="lb-photo" class="photo" alt="" hidden></div></div>
     <div class="lb-info">
       <span class="label" id="lb-eyebrow"></span>
       <h2 id="lb-title"></h2>
@@ -379,16 +376,12 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 </div>
 
 <script>
-/* ---------- data ---------- */
+/* ---------- data ----------
+   To show your own photo for a piece, add  img:"photos/your-file.jpg"  to its entry
+   (keep the photos folder next to this file). Pieces without img show a drawn placeholder.
+   r sets the frame shape: r45 = portrait 4:5, r34 = portrait 3:4, r11 = square, r54 = landscape. */
 const ART = [
   {t:"Harbour at 6am", m:"Watercolour", s:"A4 (21 × 29.7 cm)", y:"September 2026", st:"wash", r:"r45", pal:["#C9B8A0","#D9A890","#8A5A48","#4A2E26"], n:"Painted wet-on-wet before the fishing boats went out. Three layers, with the paper left bare for the light on the water."},
-  {t:"Monstera study", m:"Gouache", s:"20 × 20 cm", y:"August 2026", st:"leaf", r:"r11", pal:["#EADFCB","#7A4A36","#9A6A4A","#4A2E22"], n:"From the plant on my desk. Gouache let me work dark to light, which watercolour won't allow."},
-  {t:"Line portrait no. 3", m:"Ink", s:"A5", y:"August 2026", st:"lines", r:"r34", pal:["#EFE6D6","#C98A7A","#2A1C18"], n:"One continuous line without lifting the pen. Part of a series drawn on the train."},
-  {t:"Dusk over the rooftops", m:"Acrylic", s:"30 × 40 cm canvas", y:"July 2026", st:"blocks", r:"r45", pal:["#C98A6A","#6E3A34","#2A1A16","#E8C9A0"], n:"The view from my window around eight on a July evening. The lit windows went in last, with the smallest brush I own."},
-  {t:"Market day", m:"Pencil", s:"A5 sketchbook", y:"June 2026", st:"hatch", r:"r54", pal:["#EEE6D8","#3A2A24"], n:"Quick studies at the Saturday market. Crosshatching only, no blending."},
-  {t:"Tide pools", m:"Watercolour", s:"A4 (21 × 29.7 cm)", y:"October 2026", st:"wash", r:"r34", pal:["#C9A890","#E3D3BC","#8A4E40","#4A2420"], n:"Granulating pigments did most of the work. I added salt and waited."},
-  {t:"Orange bowl", m:"Gouache", s:"15 × 20 cm", y:"May 2026", st:"still", r:"r11", pal:["#D8CBB8","#6E4A3A","#EDE4D4","#B5452F"], n:"A one-hour still life to practise warm colours against cool."},
-  {t:"Night bus", m:"Digital", s:"3000 × 3750 px", y:"April 2026", st:"blocks", r:"r45", pal:["#3A2420","#24160F","#140C09","#D99A6A"], n:"Drawn on a tablet on the late bus home. Flat shapes, five colours."}
 ];
 const CRO = [
   {t:"Granny square cardigan", st:"granny", done:false, hook:"5.0 mm", yarn:"Worsted wool, nine colours", hrs:"62 so far", y:"Begun August 2026", pal:["#EDE3D3","#7A2A30","#B5674F","#8A6A4A","#3E2A22"], n:"Forty-eight squares joined and one sleeve finished. The second sleeve is on the hook."},
@@ -400,11 +393,6 @@ const CRO = [
 ];
 const BOOKS = [
   {t:"Piranesi", a:"Susanna Clarke", r:5, p:272, d:"2026-10-12", g:"Fantasy", c:"#4E3326", rev:"A strange, quiet book about a man who lives in an endless house of statues and tides. It reads like a puzzle and a prayer at once. I finished it in two sittings, then sat in silence for a while.", tags:["Worth re-reading","Short"]},
-  {t:"Braiding Sweetgrass", a:"Robin Wall Kimmerer", r:4.5, p:408, d:"2026-09-03", g:"Non-fiction", c:"#6B4A32", rev:"Essays on plants, gratitude and reciprocity from a botanist and member of the Citizen Potawatomi Nation. Best read slowly, one essay at a time. It changed how I look at my garden.", tags:["Slow read"]},
-  {t:"Tomorrow, and Tomorrow, and Tomorrow", a:"Gabrielle Zevin", r:4, p:416, d:"2026-07-21", g:"Literary fiction", c:"#6E2430", rev:"Two friends make video games together across thirty years. The passages about creative partnership hit hard. The middle drags a little, but the ending earns it.", tags:["Friendship"]},
-  {t:"Project Hail Mary", a:"Andy Weir", r:4, p:496, d:"2026-06-02", g:"Sci-fi", c:"#7E3B2A", rev:"A science teacher wakes alone on a spaceship with no memory. Pure fun and full of problem-solving, with one of the best friendships in science fiction. Not every joke lands, but the heart does.", tags:["Page-turner"]},
-  {t:"The Remains of the Day", a:"Kazuo Ishiguro", r:5, p:258, d:"2026-04-15", g:"Literary fiction", c:"#4A1A20", rev:"An English butler takes a road trip and slowly sees what his loyalty has cost him. So much is left unsaid, and that is the point. Devastating in the gentlest way.", tags:["Classic","Short"]},
-  {t:"The Midnight Library", a:"Matt Haig", r:3, p:304, d:"2026-02-08", g:"Fantasy", c:"#5A4030", rev:"A woman gets to try every life she might have lived. A lovely premise and a comforting read, though the message is spelled out a little too plainly for me.", tags:["Comfort read"]}
 ];
 const NOTES = [
   {k:"photo", t:"Small Joys, issue one", w:"Zine · September 2026", p:"Twelve pages folded from A3, printed in two colours. Thirty copies, gone by noon. Issue two is about rainy days."},
@@ -485,7 +473,7 @@ const CRODRAW = {
 };
 function drawShelf(c,w,h){
   c.fillStyle="#EADFCB";c.fillRect(0,0,w,h);c.fillStyle="#8A5A3C";c.fillRect(0,h*.78,w,h*.22);
-  let x=w*.1;BOOKS.concat(BOOKS.slice(0,4)).forEach((b,i)=>{if(x>w*.9)return;const bw=w*(.07+(i%3)*.016),bh=h*(.4+((i*37)%18)/100);c.fillStyle=b.c;c.fillRect(x,h*.78-bh,bw,bh);c.fillStyle="rgba(247,236,221,.55)";c.fillRect(x+bw*.25,h*.78-bh+bh*.1,bw*.5,1.5);c.fillRect(x+bw*.25,h*.78-bh*.16,bw*.5,1.5);x+=bw+2});
+  let x=w*.1;["#4E3326","#6B4A32","#6E2430","#7E3B2A","#4A1A20","#5A4030","#6B4A32","#4E3326","#7E3B2A","#6E2430"].map(c=>({c})).forEach((b,i)=>{if(x>w*.9)return;const bw=w*(.07+(i%3)*.016),bh=h*(.4+((i*37)%18)/100);c.fillStyle=b.c;c.fillRect(x,h*.78-bh,bw,bh);c.fillStyle="rgba(247,236,221,.55)";c.fillRect(x+bw*.25,h*.78-bh+bh*.1,bw*.5,1.5);c.fillRect(x+bw*.25,h*.78-bh*.16,bw*.5,1.5);x+=bw+2});
 }
 function drawMisc(c,w,h){
   c.fillStyle="#EADFCB";c.fillRect(0,0,w,h);
@@ -505,6 +493,13 @@ function paint(cv){
   else if(k==="shelf")drawShelf(c,w,h);
   else if(k==="misc")drawMisc(c,w,h);
 }
+function swapPhotos(){
+  document.querySelectorAll("canvas[data-kind]").forEach(cv=>{
+    const k=cv.dataset.kind,i=+cv.dataset.i,a=k==="art"?ART[i]:k==="crochet"?CRO[i]:null;
+    if(!a||!a.img)return;
+    const im=new Image();im.src=a.img;im.alt=a.t;im.loading="lazy";im.className="photo";cv.replaceWith(im);
+  });
+}
 function paintVisible(){document.querySelectorAll("canvas[data-kind]").forEach(cv=>{if(cv.offsetParent!==null)paint(cv)})}
 
 /* ---------- builders ---------- */
@@ -518,16 +513,16 @@ const FRAME_W={r45:260,r11:230,r34:250,r54:320};
 function renderArt(){
   document.getElementById("art-grid").innerHTML=ART.map((a,i)=>({a,i})).filter(({a})=>artF==="All"||a.m===artF).map(({a,i})=>
     `<button class="hang" type="button" data-open="art" data-i="${i}" style="--w:${FRAME_W[a.r]}px"><div class="frame"><div class="mat2"><div class="img ${a.r}"><canvas data-kind="art" data-i="${i}" aria-hidden="true"></canvas></div></div></div><div class="walllabel"><b>${esc(a.t)}</b><span>${esc(a.m)}, ${esc(a.s)}</span><span>${esc(a.y)}</span></div></button>`).join("");
-  paintVisible();
+  swapPhotos();paintVisible();
 }
 function renderCro(){
   document.getElementById("cro-grid").innerHTML=CRO.map((a,i)=>({a,i})).filter(({a})=>croF==="All"||(croF==="Finished"?a.done:!a.done)).map(({a,i})=>
     `<button class="yarn" type="button" data-open="crochet" data-i="${i}"><span class="tag ${a.done?"":"wip"}">${a.done?"Finished":"On the hook"}</span><div class="img r11"><canvas data-kind="crochet" data-i="${i}" aria-hidden="true"></canvas></div><div class="chain" aria-hidden="true"></div><div class="band-label"><span class="label">${esc(a.y)}</span><b>${esc(a.t)}</b></div><dl class="specs"><div><dt>Hook</dt><dd>${esc(a.hook)}</dd></div><div><dt>Hours</dt><dd>${esc(a.hrs)}</dd></div><div class="wide"><dt>Yarn</dt><dd>${esc(a.yarn)}</dd></div></dl></button>`).join("");
-  paintVisible();
+  swapPhotos();paintVisible();
 }
 const CALL={"Fantasy":"FIC","Literary fiction":"FIC","Sci-fi":"SF","Non-fiction":"NF"};
 function renderBooks(){
-  const sort=document.getElementById("book-sort").value;
+  const sort="recent";
   const list=BOOKS.filter(b=>bookF==="All"||b.g===bookF).sort((a,b)=>sort==="rating"?b.r-a.r||b.d.localeCompare(a.d):sort==="title"?a.t.localeCompare(b.t):b.d.localeCompare(a.d));
   document.getElementById("book-list").innerHTML=list.map((b,idx)=>{
     const parts=b.a.split(" "),last=parts.pop(),first=parts.join(" ");
@@ -564,7 +559,9 @@ function openLB(kind,i){
   document.getElementById("lb-note").textContent=a.n;
   document.getElementById("lb-img").className="img "+(kind==="art"?a.r:"r11");
   const cv=document.getElementById("lb-canvas");cv.dataset.kind=kind;cv.dataset.i=i;
-  lastFocus=document.activeElement;lb.hidden=false;document.body.style.overflow="hidden";paint(cv);document.getElementById("lb-close").focus();
+  const ph=document.getElementById("lb-photo");
+  if(a.img){ph.src=a.img;ph.alt=a.t;ph.hidden=false;cv.hidden=true}else{ph.hidden=true;ph.removeAttribute("src");cv.hidden=false}
+  lastFocus=document.activeElement;lb.hidden=false;document.body.style.overflow="hidden";if(!a.img)paint(cv);document.getElementById("lb-close").focus();
 }
 function closeLB(){lb.hidden=true;document.body.style.overflow="";if(lastFocus)lastFocus.focus()}
 document.addEventListener("click",e=>{const p=e.target.closest("[data-open]");if(p)openLB(p.dataset.open,+p.dataset.i)});
@@ -592,11 +589,8 @@ function route(){
 }
 
 /* ---------- init ---------- */
-chips(document.getElementById("art-filters"),["All",...new Set(ART.map(a=>a.m))],v=>{artF=v;renderArt()});
 chips(document.getElementById("cro-filters"),["All","Finished","On the hook"],v=>{croF=v;renderCro()});
-chips(document.getElementById("book-filters"),["All",...new Set(BOOKS.map(b=>b.g))],v=>{bookF=v;renderBooks()});
-document.getElementById("book-sort").addEventListener("change",renderBooks);
-renderArt();renderCro();renderBooks();renderBoard();
+renderArt();renderCro();renderBooks();renderBoard();swapPhotos();
 window.addEventListener("hashchange",route);
 let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{paintVisible();if(!lb.hidden)paint(document.getElementById("lb-canvas"))},120)});
 route();
