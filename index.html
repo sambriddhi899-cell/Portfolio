@@ -1,13 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sambriddhi's Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Yesteryear&family=Jost:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
-<style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title data-src>Sambriddhi's Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover" data-src>
+<link rel="preconnect" href="https://fonts.googleapis.com" data-src>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-src>
+<link data-src rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Yesteryear&family=Jost:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<style data-src>
 /* Layout: 1950s Italian packaging shell (oval script masthead, colour-block lineup, reds & browns on parchment). Each section has its own world: Art = gallery wall, Crochet = yarn labels on gingham, Books = library cards on a desk, Miscellaneous = corkboard scrapbook. Single light theme by design. */
 :root{
   --parchment:#F3EADB; --paper:#FBF6EE; --ink:#2A1712; --muted:#7A5E50; --line:#DCCAB3;
@@ -172,6 +168,41 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 .sticky h3{font-family:var(--script);font-size:1.9rem;color:var(--ink);line-height:1}
 .sticky p{margin:0;font-size:.95rem}
 
+/* editing (editors only) */
+.owner-bar{display:flex;gap:10px 12px;flex-wrap:wrap;align-items:center}
+.add-btn{font:600 .74rem var(--body);letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border-radius:999px;border:0;background:var(--cream);color:var(--cherry);cursor:pointer;transition:transform .2s}
+.add-btn:hover{transform:rotate(-1.5deg)}
+.gingham .add-btn{background:var(--rust);color:var(--cream)}
+.ghost-btn{font:500 .7rem var(--body);letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}
+.owner-note{font-size:.78rem;opacity:.75}
+.empty{grid-column:1/-1;width:100%;text-align:center;font-family:var(--display);font-size:1.4rem;opacity:.85;margin:24px 0}
+.sheet{position:fixed;inset:0;z-index:30;background:rgba(42,23,18,.6);display:grid;place-items:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sheet-card{background:var(--paper);color:var(--ink);width:min(580px,100%);padding:28px clamp(18px,4vw,32px);display:grid;gap:18px;border-top:6px solid var(--cherry);margin:auto}
+.sheet[data-kind="crochet"] .sheet-card{border-top-color:var(--rust)}
+.sheet-head{display:grid;gap:4px}
+.sheet-head h2{font-size:2rem}
+.drop{display:grid;place-items:center;gap:8px;min-height:170px;border:2px dashed var(--line);background:var(--parchment);cursor:pointer;position:relative;overflow:hidden;text-align:center;padding:14px;color:var(--muted);font-size:.95rem}
+.drop:focus-within{outline:2px solid var(--cherry);outline-offset:2px}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop img{max-height:240px;width:auto;max-width:100%;object-fit:contain;display:block}
+.drop b{font-family:var(--script);font-weight:400;font-size:1.8rem;color:var(--cherry);line-height:1}
+.fields{display:grid;gap:12px}
+.fields label{display:grid;gap:5px;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fields input,.fields textarea,.fields select{font:400 1rem var(--body);letter-spacing:0;text-transform:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%;min-width:0}
+.fields textarea{resize:vertical}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sheet[data-kind="art"] .cro-only,.sheet[data-kind="crochet"] .art-only{display:none}
+.sheet-msg{margin:0;font-size:.92rem;color:var(--cherry);min-height:1.3em}
+.sheet-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.solid,.ghost{font:600 .72rem var(--body);letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border-radius:999px;cursor:pointer}
+.solid{background:var(--cherry);color:var(--cream);border:0}
+.solid:disabled{opacity:.6;cursor:progress}
+.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.remove-btn{font:600 .66rem var(--body);letter-spacing:.14em;text-transform:uppercase;background:none;border:1px solid var(--cherry);color:var(--cherry);border-radius:999px;padding:8px 16px;cursor:pointer}
+.remove-btn.armed{background:var(--cherry);color:var(--cream)}
+.lb-msg{margin:0;font-size:.88rem;color:var(--cherry)}
+@media (max-width:480px){.pair{grid-template-columns:1fr}}
+
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:20;background:var(--parchment);display:grid;place-items:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:fade .3s ease}
 @keyframes fade{from{opacity:.001}to{opacity:1}}
@@ -233,11 +264,8 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
-<style>body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
-</head>
-<body>
 
-<header class="top">
+<header class="top" data-src>
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Sambriddhi, home">Sambriddhi</a>
     <nav aria-label="Sections">
@@ -251,7 +279,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
   </div>
 </header>
 
-<main>
+<main data-src>
 
   <!-- HOME: just the four sections -->
   <section class="view" data-view="home">
@@ -262,8 +290,8 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
         <p>Four little rooms. Pick one.</p>
       </div>
       <div class="range">
-        <a class="box plate" href="#art" style="--c:var(--cherry)"><span class="label">1 piece</span><div class="window"><canvas data-kind="art" data-i="0" aria-hidden="true"></canvas></div><h3>Art</h3><span class="label">The gallery wall</span><span class="go">Enter</span></a>
-        <a class="box plate" href="#crochet" style="--c:var(--rust)"><span class="label">6 projects</span><div class="window"><canvas data-kind="crochet" data-i="0" aria-hidden="true"></canvas></div><h3>Crochet</h3><span class="label">The yarn basket</span><span class="go">Enter</span></a>
+        <a class="box plate" href="#art" style="--c:var(--cherry)"><span class="label" id="count-art">1 piece</span><div class="window"><canvas data-kind="art" data-i="0" aria-hidden="true"></canvas></div><h3>Art</h3><span class="label">The gallery wall</span><span class="go">Enter</span></a>
+        <a class="box plate" href="#crochet" style="--c:var(--rust)"><span class="label" id="count-cro">1 project</span><div class="window"><canvas data-kind="crochet" data-i="0" aria-hidden="true"></canvas></div><h3>Crochet</h3><span class="label">The yarn basket</span><span class="go">Enter</span></a>
         <a class="box plate" href="#books" style="--c:var(--cocoa)"><span class="label">1 review</span><div class="window"><canvas data-kind="shelf" aria-hidden="true"></canvas></div><h3>Book reviews</h3><span class="label">The card catalogue</span><span class="go">Enter</span></a>
         <a class="box plate" href="#misc" style="--c:var(--camel);--on:var(--ink)"><span class="label">8 scraps</span><div class="window"><canvas data-kind="misc" aria-hidden="true"></canvas></div><h3>Miscellaneous</h3><span class="label">The corkboard</span><span class="go">Enter</span></a>
       </div>
@@ -280,6 +308,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     </div>
     <div class="wall">
       <div class="wrap page-body">
+        <div class="owner-bar" data-owner hidden><button type="button" class="add-btn" data-add="art">+ Add a piece</button><button type="button" class="ghost-btn" data-download>Download site file</button><span class="owner-note">Only people who can edit the site see these buttons.</span></div>
         <div class="salon" id="art-grid"></div>
       </div>
     </div>
@@ -295,7 +324,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
     </div>
     <div class="gingham">
       <div class="wrap page-body">
-        <div class="filters" id="cro-filters" role="group" aria-label="Filter by status"></div>
+        <div class="owner-bar" data-owner hidden><button type="button" class="add-btn" data-add="crochet">+ Add a project</button><button type="button" class="ghost-btn" data-download>Download site file</button><span class="owner-note">Only people who can edit the site see these buttons.</span></div>
         <div class="patterns" id="cro-grid"></div>
       </div>
     </div>
@@ -332,7 +361,7 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
   </section>
 </main>
 
-<footer>
+<footer data-src>
   <div class="band" style="--c:var(--oxblood)">
     <div class="wrap contact-in">
       <div class="pitch">
@@ -357,12 +386,12 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
   <div class="base">
     <div class="wrap">
       <a class="brand" href="#home" aria-label="Sambriddhi, back to home">Sambriddhi</a>
-      <span class="fine">© 2026 Sambriddhi · Placeholder pieces and reviews. Replace with your own.</span>
+      <span class="fine">© 2026 Sambriddhi</span>
     </div>
   </div>
 </footer>
 
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+<div class="lb" id="lb" data-src hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <button class="lb-close" id="lb-close" type="button">Close</button>
   <div class="lb-card">
     <div class="mat plate"><div class="img" id="lb-img"><canvas id="lb-canvas"></canvas><img id="lb-photo" class="photo" alt="" hidden></div></div>
@@ -371,26 +400,45 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
       <h2 id="lb-title"></h2>
       <dl id="lb-dl"></dl>
       <p id="lb-note"></p>
+      <button type="button" class="remove-btn" id="lb-remove" hidden>Remove this piece</button>
+      <p class="lb-msg" id="lb-msg" role="status"></p>
     </div>
   </div>
 </div>
 
-<script>
+<div class="sheet" id="sheet" data-src hidden role="dialog" aria-modal="true" aria-labelledby="sheet-title" data-kind="art">
+  <form class="sheet-card" id="sheet-form" novalidate>
+    <div class="sheet-head"><span class="label" id="sheet-kind">Art</span><h2 id="sheet-title">Add a piece</h2></div>
+    <label class="drop" for="f-photo"><input type="file" id="f-photo" accept="image/*"><img id="f-preview" alt="" hidden><b id="f-drop-big">Choose a photo</b><span id="f-drop-text">JPG or PNG. Big photos are shrunk to fit.</span></label>
+    <div class="fields">
+      <label for="f-title">Title<input id="f-title" maxlength="80" autocomplete="off"></label>
+      <div class="pair art-only">
+        <label for="f-medium">Medium<input id="f-medium" placeholder="Watercolour" maxlength="60"></label>
+        <label for="f-size">Size<input id="f-size" placeholder="A4" maxlength="60"></label>
+      </div>
+      <div class="pair cro-only">
+        <label for="f-status">Status<select id="f-status"><option value="done">Finished</option><option value="wip">On the hook</option></select></label>
+        <label for="f-hook">Hook size<input id="f-hook" placeholder="5.0 mm" maxlength="30"></label>
+        <label for="f-yarn">Yarn<input id="f-yarn" placeholder="Worsted wool" maxlength="80"></label>
+        <label for="f-hours">Hours<input id="f-hours" placeholder="12" maxlength="30"></label>
+      </div>
+      <label for="f-date">When<input id="f-date" placeholder="October 2026" maxlength="40"></label>
+      <label for="f-note">A line about it<textarea id="f-note" rows="3" maxlength="400"></textarea></label>
+    </div>
+    <p class="sheet-msg" id="sheet-msg" role="status"></p>
+    <div class="sheet-actions"><button type="button" class="ghost" id="sheet-cancel">Cancel</button><button type="submit" class="solid" id="sheet-save">Add to the site</button></div>
+  </form>
+</div>
+
+<script type="application/json" id="pieces" data-src>{"art": [{"t": "Harbour at 6am", "m": "Watercolour", "s": "A4 (21 × 29.7 cm)", "y": "September 2026", "st": "wash", "r": "r45", "pal": ["#C9B8A0", "#D9A890", "#8A5A48", "#4A2E26"], "n": "Painted wet-on-wet before the fishing boats went out. Three layers, with the paper left bare for the light on the water."}], "crochet": [{"t": "Granny square cardigan", "st": "granny", "done": false, "hook": "5.0 mm", "yarn": "Worsted wool, nine colours", "hrs": "62 so far", "y": "Begun August 2026", "pal": ["#EDE3D3", "#7A2A30", "#B5674F", "#8A6A4A", "#3E2A22"], "n": "Forty-eight squares joined and one sleeve finished. The second sleeve is on the hook."}]}</script>
+
+<script data-src>
+/* Capture the page's own source first, before anything renders, so editors can republish it with new pieces. */
+const SOURCE=[...document.querySelectorAll("[data-src]")].filter(n=>n.parentElement===document.body||n.parentElement===document.head).map(n=>n.outerHTML);
 /* ---------- data ----------
-   To show your own photo for a piece, add  img:"photos/your-file.jpg"  to its entry
-   (keep the photos folder next to this file). Pieces without img show a drawn placeholder.
-   r sets the frame shape: r45 = portrait 4:5, r34 = portrait 3:4, r11 = square, r54 = landscape. */
-const ART = [
-  {t:"Harbour at 6am", m:"Watercolour", s:"A4 (21 × 29.7 cm)", y:"September 2026", st:"wash", r:"r45", pal:["#C9B8A0","#D9A890","#8A5A48","#4A2E26"], n:"Painted wet-on-wet before the fishing boats went out. Three layers, with the paper left bare for the light on the water."},
-];
-const CRO = [
-  {t:"Granny square cardigan", st:"granny", done:false, hook:"5.0 mm", yarn:"Worsted wool, nine colours", hrs:"62 so far", y:"Begun August 2026", pal:["#EDE3D3","#7A2A30","#B5674F","#8A6A4A","#3E2A22"], n:"Forty-eight squares joined and one sleeve finished. The second sleeve is on the hook."},
-  {t:"Sunset stripe blanket", st:"stripes", done:true, hook:"6.0 mm", yarn:"Chunky wool blend", hrs:"40", y:"March 2026", pal:["#E3CBA8","#C98A6A","#A0524A","#7A2A30","#4A2A24"], n:"Half-double crochet through the back loop only, which gives it that ribbed texture."},
-  {t:"Pixel cat pillow", st:"c2c", done:true, hook:"4.0 mm", yarn:"DK cotton", hrs:"18", y:"January 2026", pal:["#D9CBB5","#2A1C18","#B5674F","#C98A7A"], n:"Corner-to-corner graph, 16 × 16 tiles, charted from a photo of my cat."},
-  {t:"Market tote", st:"mesh", done:true, hook:"4.5 mm", yarn:"Recycled cotton", hrs:"7", y:"June 2026", pal:["#E3D6C2","#6E3A2E"], n:"Mesh stitch, so it stretches to carry a week of vegetables."},
-  {t:"Bucket hat", st:"spiral", done:true, hook:"5.0 mm", yarn:"Cotton blend", hrs:"5", y:"May 2026", pal:["#EADCC6","#A0683F","#6E2A28"], n:"Worked in one continuous spiral from the crown down. No seams."},
-  {t:"Coaster set", st:"granny", done:false, hook:"3.5 mm", yarn:"Scrap cotton", hrs:"3 so far", y:"Begun October 2026", pal:["#E6DCCD","#8A6A4A","#7A2A30","#B5674F"], n:"Made from cardigan leftovers. Four of six finished."}
-];
+   Art and crochet pieces live in the JSON block above (id="pieces"). On the live site, editors add and remove them with the buttons on each page. */
+const DATA=(()=>{try{return JSON.parse(document.getElementById("pieces").textContent)}catch(_){return {art:[],crochet:[]}}})();
+let ART=DATA.art||[],CRO=DATA.crochet||[];
 const BOOKS = [
   {t:"Piranesi", a:"Susanna Clarke", r:5, p:272, d:"2026-10-12", g:"Fantasy", c:"#4E3326", rev:"A strange, quiet book about a man who lives in an endless house of statues and tides. It reads like a puzzle and a prayer at once. I finished it in two sittings, then sat in silence for a while.", tags:["Worth re-reading","Short"]},
 ];
@@ -488,8 +536,8 @@ function paint(cv){
   if(cv.width!==Math.round(w*d)||cv.height!==Math.round(h*d)){cv.width=Math.round(w*d);cv.height=Math.round(h*d)}
   const c=cv.getContext("2d");c.setTransform(d,0,0,d,0,0);c.clearRect(0,0,w,h);
   const k=cv.dataset.kind,i=+cv.dataset.i;
-  if(k==="art"){const a=ART[i];ARTDRAW[a.st](c,w,h,rng(i*97+13),a.pal)}
-  else if(k==="crochet"){const a=CRO[i];CRODRAW[a.st](c,w,h,rng(i*53+7),a.pal)}
+  if(k==="art"){const a=ART[i];if(a&&a.st)ARTDRAW[a.st](c,w,h,rng(i*97+13),a.pal)}
+  else if(k==="crochet"){const a=CRO[i];if(a&&a.st)CRODRAW[a.st](c,w,h,rng(i*53+7),a.pal)}
   else if(k==="shelf")drawShelf(c,w,h);
   else if(k==="misc")drawMisc(c,w,h);
 }
@@ -512,13 +560,20 @@ let artF="All",croF="All",bookF="All";
 const FRAME_W={r45:260,r11:230,r34:250,r54:320};
 function renderArt(){
   document.getElementById("art-grid").innerHTML=ART.map((a,i)=>({a,i})).filter(({a})=>artF==="All"||a.m===artF).map(({a,i})=>
-    `<button class="hang" type="button" data-open="art" data-i="${i}" style="--w:${FRAME_W[a.r]}px"><div class="frame"><div class="mat2"><div class="img ${a.r}"><canvas data-kind="art" data-i="${i}" aria-hidden="true"></canvas></div></div></div><div class="walllabel"><b>${esc(a.t)}</b><span>${esc(a.m)}, ${esc(a.s)}</span><span>${esc(a.y)}</span></div></button>`).join("");
-  swapPhotos();paintVisible();
+    `<button class="hang" type="button" data-open="art" data-i="${i}" style="--w:${FRAME_W[a.r]||260}px"><div class="frame"><div class="mat2"><div class="img ${a.r||"r45"}"><canvas data-kind="art" data-i="${i}" aria-hidden="true"></canvas></div></div></div><div class="walllabel"><b>${esc(a.t)}</b><span>${esc([a.m,a.s].filter(Boolean).join(", "))}</span><span>${esc(a.y)}</span></div></button>`).join("");
+  if(!ART.length)document.getElementById("art-grid").innerHTML='<p class="empty">No pieces on the wall yet.</p>';
+  updateCounts();swapPhotos();paintVisible();
 }
 function renderCro(){
-  document.getElementById("cro-grid").innerHTML=CRO.map((a,i)=>({a,i})).filter(({a})=>croF==="All"||(croF==="Finished"?a.done:!a.done)).map(({a,i})=>
+  document.getElementById("cro-grid").innerHTML=CRO.map((a,i)=>({a,i})).map(({a,i})=>
     `<button class="yarn" type="button" data-open="crochet" data-i="${i}"><span class="tag ${a.done?"":"wip"}">${a.done?"Finished":"On the hook"}</span><div class="img r11"><canvas data-kind="crochet" data-i="${i}" aria-hidden="true"></canvas></div><div class="chain" aria-hidden="true"></div><div class="band-label"><span class="label">${esc(a.y)}</span><b>${esc(a.t)}</b></div><dl class="specs"><div><dt>Hook</dt><dd>${esc(a.hook)}</dd></div><div><dt>Hours</dt><dd>${esc(a.hrs)}</dd></div><div class="wide"><dt>Yarn</dt><dd>${esc(a.yarn)}</dd></div></dl></button>`).join("");
-  swapPhotos();paintVisible();
+  if(!CRO.length)document.getElementById("cro-grid").innerHTML='<p class="empty">No projects in the basket yet.</p>';
+  updateCounts();swapPhotos();paintVisible();
+}
+function updateCounts(){
+  const ca=document.getElementById("count-art"),cc=document.getElementById("count-cro");
+  if(ca)ca.textContent=ART.length+(ART.length===1?" piece":" pieces");
+  if(cc)cc.textContent=CRO.length+(CRO.length===1?" project":" projects");
 }
 const CALL={"Fantasy":"FIC","Literary fiction":"FIC","Sci-fi":"SF","Non-fiction":"NF"};
 function renderBooks(){
@@ -554,10 +609,11 @@ function openLB(kind,i){
   const a=kind==="art"?ART[i]:CRO[i];
   document.getElementById("lb-eyebrow").textContent=kind==="art"?"Art · "+a.m:"Crochet · "+(a.done?"Finished":"On the hook");
   document.getElementById("lb-title").textContent=a.t;
-  const rows=kind==="art"?[["Medium",a.m],["Size",a.s],["Made",a.y]]:[["Hook",a.hook],["Yarn",a.yarn],["Hours",a.hrs],["Date",a.y]];
+  const rows=(kind==="art"?[["Medium",a.m],["Size",a.s],["Made",a.y]]:[["Hook",a.hook],["Yarn",a.yarn],["Hours",a.hrs],["Date",a.y]]).filter(r=>r[1]);
   document.getElementById("lb-dl").innerHTML=rows.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
   document.getElementById("lb-note").textContent=a.n;
-  document.getElementById("lb-img").className="img "+(kind==="art"?a.r:"r11");
+  document.getElementById("lb-img").className="img "+(kind==="art"?(a.r||"r45"):"r11");
+  cur={kind,i};const rb=document.getElementById("lb-remove");rb.hidden=!OWNER;rb.classList.remove("armed");rb.textContent="Remove this piece";rb.disabled=false;document.getElementById("lb-msg").textContent="";
   const cv=document.getElementById("lb-canvas");cv.dataset.kind=kind;cv.dataset.i=i;
   const ph=document.getElementById("lb-photo");
   if(a.img){ph.src=a.img;ph.alt=a.t;ph.hidden=false;cv.hidden=true}else{ph.hidden=true;ph.removeAttribute("src");cv.hidden=false}
@@ -568,6 +624,144 @@ document.addEventListener("click",e=>{const p=e.target.closest("[data-open]");if
 document.getElementById("lb-close").onclick=closeLB;
 lb.addEventListener("click",e=>{if(e.target===lb)closeLB()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!lb.hidden)closeLB()});
+
+/* ---------- editing: only for people who can edit the live site ---------- */
+let OWNER=false,DOWNLOADS=null,cur=null,pending=null;
+const FALLBACK_RESET=":root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}";
+function buildDoc(){
+  const json=JSON.stringify({art:ART,crochet:CRO}).replace(/</g,"\\u003c");
+  const open='<scr'+'ipt type="application/json" id="pieces"';
+  const parts=SOURCE.map(h=>h.startsWith(open)?open+' data-src="">'+json+'</scr'+'ipt>':h);
+  const rs=document.head.querySelector("style:not([data-src])");
+  const reset=rs&&rs.textContent?rs.textContent:FALLBACK_RESET;
+  return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>'+reset+'</style></head><body>'+parts.join("\n")+'</body></html>';
+}
+async function publishDoc(){
+  const art=(window.claude&&typeof claude.use==="function")?await claude.use("artifact"):null;
+  if(!art)throw {code:"unavailable"};
+  const html=buildDoc();
+  if(html.length>15500000)throw {code:"too_large"};
+  return art.publish(html);
+}
+const ERR={
+  conflict:"A newer version was just saved, so the page is reloading. Try again once it refreshes.",
+  not_writer:"This view can't save changes. Only people with edit access can change the site.",
+  not_granted:"This view can't save changes. Only people with edit access can change the site.",
+  too_large:"The site is full. Try a smaller photo, or remove an old piece first.",
+  rate_limited:"Saving too often. Wait a minute, then try again.",
+  unavailable:"Saving only works on the live site, not in a downloaded copy."
+};
+const errText=e=>ERR[e&&e.code]||"Couldn't save. Check your connection and try again.";
+
+(async()=>{
+  if(!window.claude||typeof claude.use!=="function")return;
+  try{
+    const [user,art]=await Promise.all([claude.use("user"),claude.use("artifact")]);
+    if(!user||!art)return;
+    if(!(await user.canEdit()))return;
+    OWNER=true;
+    document.querySelectorAll("[data-owner]").forEach(el=>el.hidden=false);
+    DOWNLOADS=await claude.use("downloads");
+    if(!DOWNLOADS)document.querySelectorAll("[data-download]").forEach(b=>b.hidden=true);
+  }catch(_){}
+})();
+
+/* photo -> resized JPEG data URL, so it lives inside the page and everyone can see it */
+const SHAPES=[["r34",.75],["r45",.8],["r11",1],["r54",1.25]];
+function readPhoto(file){
+  return new Promise((resolve,reject)=>{
+    const url=URL.createObjectURL(file),im=new Image();
+    im.onload=()=>{
+      try{
+        const max=1400,sc=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight));
+        const w=Math.max(1,Math.round(im.naturalWidth*sc)),h=Math.max(1,Math.round(im.naturalHeight*sc));
+        const c=document.createElement("canvas");c.width=w;c.height=h;
+        const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);
+        const ratio=w/h;let r="r45",best=9;SHAPES.forEach(([k,v])=>{const d=Math.abs(Math.log(ratio/v));if(d<best){best=d;r=k}});
+        resolve({data:c.toDataURL("image/jpeg",.82),r});
+      }catch(err){reject(err)}finally{URL.revokeObjectURL(url)}
+    };
+    im.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("decode"))};
+    im.src=url;
+  });
+}
+
+const sheet=document.getElementById("sheet"),form=document.getElementById("sheet-form"),msg=document.getElementById("sheet-msg");
+const $=id=>document.getElementById(id);
+let sheetOpener=null;
+function openSheet(kind){
+  form.reset();pending=null;msg.textContent="";
+  $("f-preview").hidden=true;$("f-preview").removeAttribute("src");
+  $("f-drop-big").textContent="Choose a photo";$("f-drop-text").textContent="JPG or PNG. Big photos are shrunk to fit.";
+  sheet.dataset.kind=kind;
+  $("sheet-kind").textContent=kind==="art"?"Art":"Crochet";
+  $("sheet-title").textContent=kind==="art"?"Add a piece":"Add a project";
+  $("sheet-save").disabled=false;$("sheet-save").textContent="Add to the site";
+  sheetOpener=document.activeElement;sheet.hidden=false;document.body.style.overflow="hidden";$("f-photo").focus();
+}
+function closeSheet(){sheet.hidden=true;document.body.style.overflow="";if(sheetOpener)sheetOpener.focus()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b&&OWNER)openSheet(b.dataset.add)});
+$("sheet-cancel").addEventListener("click",closeSheet);
+sheet.addEventListener("click",e=>{if(e.target===sheet&&!$("sheet-save").disabled)closeSheet()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!sheet.hidden&&!$("sheet-save").disabled)closeSheet()});
+$("f-photo").addEventListener("change",async e=>{
+  const f=e.target.files&&e.target.files[0];if(!f)return;
+  msg.textContent="";$("f-drop-big").textContent="Reading photo…";
+  try{
+    pending=await readPhoto(f);
+    $("f-preview").src=pending.data;$("f-preview").hidden=false;
+    $("f-drop-big").textContent="Looks good";$("f-drop-text").textContent="Tap to choose a different photo.";
+    if(!$("f-title").value)$("f-title").value=f.name.replace(/\.[^.]+$/,"").replace(/[-_]+/g," ").trim().slice(0,80);
+  }catch(_){
+    pending=null;$("f-drop-big").textContent="Choose a photo";
+    msg.textContent="Couldn't read that photo. Try a JPG or PNG (iPhone HEIC photos may need converting first).";
+  }
+});
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const kind=sheet.dataset.kind,v=id=>$(id).value.trim();
+  if(!pending){msg.textContent="Choose a photo first.";return}
+  if(!v("f-title")){msg.textContent="Give it a title.";$("f-title").focus();return}
+  const entry=kind==="art"
+    ?{t:v("f-title"),m:v("f-medium"),s:v("f-size"),y:v("f-date"),n:v("f-note"),img:pending.data,r:pending.r}
+    :{t:v("f-title"),done:$("f-status").value==="done",hook:v("f-hook"),yarn:v("f-yarn"),hrs:v("f-hours"),y:v("f-date"),n:v("f-note"),img:pending.data};
+  const list=kind==="art"?ART:CRO;
+  list.unshift(entry);
+  $("sheet-save").disabled=true;$("sheet-save").textContent="Saving…";
+  msg.textContent="Saving. The page will refresh with your new "+(kind==="art"?"piece":"project")+" in a moment.";
+  try{await publishDoc()}
+  catch(err){
+    list.shift();
+    msg.textContent=errText(err);
+    $("sheet-save").disabled=false;$("sheet-save").textContent="Add to the site";
+  }
+});
+
+/* remove from the lightbox: tap twice */
+let armTimer=null;
+$("lb-remove").addEventListener("click",async e=>{
+  const b=e.currentTarget;if(!OWNER||!cur)return;
+  if(!b.classList.contains("armed")){
+    b.classList.add("armed");b.textContent="Tap again to remove";
+    clearTimeout(armTimer);armTimer=setTimeout(()=>{b.classList.remove("armed");b.textContent="Remove this piece"},4000);
+    return;
+  }
+  clearTimeout(armTimer);
+  const list=cur.kind==="art"?ART:CRO,removed=list.splice(cur.i,1)[0];
+  b.disabled=true;b.textContent="Removing…";$("lb-msg").textContent="";
+  try{await publishDoc()}
+  catch(err){
+    list.splice(cur.i,0,removed);
+    b.disabled=false;b.classList.remove("armed");b.textContent="Remove this piece";
+    $("lb-msg").textContent=errText(err);
+  }
+});
+
+/* download the current site as one HTML file */
+document.addEventListener("click",async e=>{
+  const b=e.target.closest("[data-download]");if(!b||!DOWNLOADS)return;
+  try{await DOWNLOADS.save({filename:"sambriddhi-portfolio.html",data:new Blob([buildDoc()],{type:"text/html"})})}catch(_){}
+});
 
 /* ---------- copy email ---------- */
 document.getElementById("copy-email").addEventListener("click",e=>{
@@ -589,13 +783,10 @@ function route(){
 }
 
 /* ---------- init ---------- */
-chips(document.getElementById("cro-filters"),["All","Finished","On the hook"],v=>{croF=v;renderCro()});
 renderArt();renderCro();renderBooks();renderBoard();swapPhotos();
 window.addEventListener("hashchange",route);
 let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{paintVisible();if(!lb.hidden)paint(document.getElementById("lb-canvas"))},120)});
 route();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(paintVisible);
 </script>
-
-</body>
-</html>
+</body></html>
