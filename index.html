@@ -12,9 +12,10 @@
    EDIT YOUR SITE HERE
    Everything you'll want to change is in the script just below.
 
-   PHOTOS: make a folder called  photos  next to this file, put your
-   pictures in it, then write the path, e.g.,  photo: "photos/sunset.jpg"
-   (exact spelling; capital letters matter on Vercel).
+   PHOTOS: put your pictures in a folder called  photos  next to this
+   file (or right next to this file), then write the file name, e.g.
+   photo: "sunset.jpg". The page looks in both places.
+   Spelling must match exactly: capital letters and .jpg vs .jpeg matter.
    Leave photo as "" to show a placeholder drawing instead.
 
    TO ADD ONE: copy a whole { ... }, block, paste it, and change the text.
@@ -27,7 +28,7 @@ const ART = [
     title: "Bhairav",
     photo: "bhairav.jpeg",
     medium: "Watercolor",
-    note: " Made on chart paper in 5 hours",
+    note: " Made on chartpaper 5 hours"
   },
   {
     title: "Bird",
@@ -47,14 +48,14 @@ const ART = [
    {
     title: "Movie Poster",
     photo: "eighth.jpg",
-    medium: "Acrylic markers",
-    note: "Fan-made poster by me of my favorite movie"
+    medium: "Acyrlic markers",
+    note: "Fan made poster by me of my favorite movie"
   },
     {
     title: "Book Poster",
     photo: "wonder.jpg",
-    medium: "Acrylic markers",
-    note: "Fan-made book cover of my favorite book by me",
+    medium: "Acyrlic markers",
+    note: "Fan made book cover of my favorite book by me"
   },
       {
     title: "Elephant",
@@ -113,6 +114,7 @@ const ART = [
     medium: "Sketch" 
   },
 ];
+
 
 const CROCHET = [
   {
@@ -192,9 +194,12 @@ review: "This book had the perfect mix of character, plot, drama, and underlying
   },
 ];
 
-// Miscellaneous corkboard. Four kinds of scrap:
-//   "photo" = polaroid (can have photo: "photos/..."), "note" = sticky note,
-//   "list"  = notebook page,  "stat" = ticket with a big number
+// Miscellaneous corkboard. The examples below are placeholders: replace them with your own.
+// Four kinds of scrap:
+//   "photo" = polaroid with a picture   { kind: "photo", title: "...", when: "...", text: "...", photo: "myphoto.jpg" }
+//   "note"  = sticky note               { kind: "note",  title: "...", when: "...", text: "..." }
+//   "list"  = notebook page             { kind: "list",  title: "...", items: [["Label", "text"], ["Label", "text"]] }
+//   "stat"  = ticket with a big number  { kind: "stat",  title: "...", number: "12", text: "..." }
 const MISC = [
   { kind: "photo", title: "Small Joys, issue one", when: "Zine · September 2026", text: "Twelve pages folded from A3, printed in two colours. Thirty copies, gone by noon.", photo: "" },
   { kind: "list",  title: "Currently", items: [["Reading", "Braiding Sweetgrass, again"], ["Hooking", "Cardigan, sleeve two"], ["Painting", "A series of tiny skies"], ["Learning", "Lino printing"]] },
@@ -222,14 +227,14 @@ const CONTACT = {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Yesteryear&family=Jost:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
 <style>
 /* Layout: 1950s Italian packaging shell (oval script masthead, colour-block lineup, reds & browns on parchment). Each section has its own world: Art = gallery wall, Crochet = yarn labels on gingham, Books = library cards on a desk, Miscellaneous = corkboard scrapbook. Single light theme by design. */
-: root{
+:root{
   --parchment:#F3EADB; --paper:#FBF6EE; --ink:#2A1712; --muted:#7A5E50; --line:#DCCAB3;
   --cherry:#9E2229; --rust:#A5481F; --cocoa:#4A2C20; --camel:#C49A66; --oxblood:#5C1A22;
   --cream:#F7ECDD; --blush:#F2C4B4;
-  --display: "Gloock", "Bodoni 72", Georgia, serif;
-  --script: "Yesteryear", "Brush Script MT", cursive;
-  --body: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
-  --type: "Courier Prime", "Courier New", monospace;
+  --display:"Gloock", "Bodoni 72", Georgia, serif;
+  --script:"Yesteryear", "Brush Script MT", cursive;
+  --body:"Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --type:"Courier Prime", "Courier New", monospace;
 }
 *{box-sizing:border-box}
 body{background:var(--parchment);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
@@ -391,6 +396,8 @@ label.sort{display:flex;align-items:center;gap:10px;color:inherit}
 .lb .img.auto{aspect-ratio:auto}
 #lb-photo.fit{width:100%;height:auto;max-height:78vh}
 
+.nophoto{aspect-ratio:4/5;width:100%;display:grid;place-content:center;gap:4px;text-align:center;background:var(--parchment);color:var(--cherry);font:500 .8rem/1.4 var(--body);padding:12px;overflow-wrap:anywhere}
+.nophoto code{font:400 .75rem var(--type);color:var(--ink)}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:20;background:var(--parchment);display:grid;place-items:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:fade .3s ease}
 @keyframes fade{from{opacity:.001}to{opacity:1}}
@@ -724,7 +731,7 @@ function updateCounts(){
   set("count-art",ARTS.length,"piece","pieces");set("count-cro",CROS.length,"project","projects");
   set("count-books",BOOKS.length,"review","reviews");set("count-misc",NOTES.length,"scrap","scraps");
 }
-const CALL={"Fantasy":"FIC","Literary fiction":"FIC","Sci-fi":"SF","Non-fiction":"NF"};
+const CALL={"Fiction":"FIC","Fantasy":"FIC","Literary fiction":"FIC","Sci-fi":"SF","Non-fiction":"NF"};
 function renderBooks(){
   const sort="recent";
   const list=BOOKS.filter(b=>bookF==="All"||b.g===bookF).sort((a,b)=>sort==="rating"?b.r-a.r||b.d.localeCompare(a.d):sort==="title"?a.t.localeCompare(b.t):b.d.localeCompare(a.d));
@@ -764,7 +771,7 @@ function openLB(kind,i){
   document.getElementById("lb-img").className="img "+(a.img?"auto":kind==="art"?(a.r||"r45"):"r11");document.getElementById("lb-photo").classList.toggle("fit",!!a.img);
   const cv=document.getElementById("lb-canvas");cv.dataset.kind=kind;cv.dataset.i=i;
   const ph=document.getElementById("lb-photo");
-  if(a.img){ph.src=a.img;ph.alt=a.t;ph.hidden=false;cv.hidden=true}else{ph.hidden=true;ph.removeAttribute("src");cv.hidden=false}
+  if(a.img){delete ph.dataset.retry;ph.src=a.img;ph.alt=a.t;ph.hidden=false;cv.hidden=true}else{ph.hidden=true;ph.removeAttribute("src");cv.hidden=false}
   lastFocus=document.activeElement;lb.hidden=false;document.body.style.overflow="hidden";if(!a.img)paint(cv);document.getElementById("lb-close").focus();
 }
 function closeLB(){lb.hidden=true;document.body.style.overflow="";if(lastFocus)lastFocus.focus()}
@@ -801,6 +808,17 @@ function route(){
   window.scrollTo(0,0);
   requestAnimationFrame(paintVisible);
 }
+
+/* ---------- photos: look in the photos folder too, and say clearly when one is missing ---------- */
+document.addEventListener("error",e=>{
+  const im=e.target;if(!im||im.tagName!=="IMG"||!im.classList.contains("photo"))return;
+  const src=im.getAttribute("src")||"";
+  if(!im.dataset.retry&&!/^(https?:|data:|\/|photos\/)/.test(src)){im.dataset.retry="1";im.src="photos/"+src;return}
+  if(im.id==="lb-photo")return;
+  const box=document.createElement("div");box.className="nophoto";
+  box.innerHTML='Photo not found<code></code>';box.querySelector("code").textContent=(im.dataset.orig||src).replace(/^photos\//,"");
+  im.replaceWith(box);
+},true);
 
 /* ---------- init ---------- */
 renderArt();renderCro();renderBooks();renderBoard();swapPhotos();
